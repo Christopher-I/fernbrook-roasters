@@ -7,7 +7,7 @@ that the content model has something realistic to model. The name, the two addre
 telephone number (Ofcom's reserved 01632 960xxx drama range) and the people are all made up.
 Nothing here is client work and nothing is presented as such.
 
-- Live site: _to be filled in on deploy_
+- Live site: https://web-production-924c1.up.railway.app
 - Control panel: `/admin`
 - Maintenance guide for a non-technical owner: [MAINTENANCE.md](MAINTENANCE.md)
 
