@@ -1,9 +1,10 @@
 <?php
 /**
- * General Configuration
+ * General configuration.
  *
- * All of your system's general configuration settings go in here. You can see a
- * list of the available settings in vendor/craftcms/cms/src/config/GeneralConfig.php.
+ * One file, environment differences applied at the bottom. Everything that
+ * varies per environment comes from .env rather than being hard-coded here,
+ * so the same config ships to every environment.
  *
  * @see \craft\config\GeneralConfig
  * @link https://craftcms.com/docs/5.x/reference/config/general.html
@@ -12,21 +13,50 @@
 use craft\config\GeneralConfig;
 use craft\helpers\App;
 
-return GeneralConfig::create()
-    // Set the default week start day for date pickers (0 = Sunday, 1 = Monday, etc.)
+$isDev = App::env('CRAFT_ENVIRONMENT') === 'dev';
+
+$config = GeneralConfig::create()
     ->defaultWeekStartDay(1)
-    // Prevent generated URLs from including "index.php"
     ->omitScriptNameInUrls()
-    // Preload Single entries as Twig variables
     ->preloadSingles()
-    // Prevent user enumeration attacks
     ->preventUserEnumeration()
-    // Prevent the front-end Login page
     ->loginPath(false)
-    // Enable the Twig sandbox for system messages, etc.
     ->enableTwigSandbox()
-    // Set the @webroot alias so the clear-caches command knows where to find CP resources
+    ->errorTemplatePrefix('_errors/')
+    // Write transforms during the request rather than serving a redirect
+    // through actions/assets/generate-transform, so the HTML carries real
+    // image URLs and the browser does not pay a round trip per image.
+    ->generateTransformsBeforePageLoad()
+    ->defaultSearchTermOptions([
+        'subLeft' => true,
+        'subRight' => true,
+    ])
+    // Keep the control panel on a predictable path and out of the sitemap.
+    ->cpTrigger('admin')
     ->aliases([
         '@webroot' => dirname(__DIR__) . '/web',
-    ])
-;
+        '@web' => App::env('PRIMARY_SITE_URL'),
+    ]);
+
+if ($isDev) {
+    // Local: no template caching, so a Twig edit shows up on refresh, and
+    // generated URLs are allowed to change with the DDEV hostname.
+    $config
+        ->enableTemplateCaching(false)
+        ->allowAdminChanges(true)
+        ->disallowRobots(true)
+        ->runQueueAutomatically(true);
+} else {
+    // Production: templates compiled once, schema changes arrive through
+    // project config and `php craft up`, never through the control panel.
+    $config
+        ->enableTemplateCaching(true)
+        ->allowAdminChanges(false)
+        ->disallowRobots(false)
+        // The queue runs as its own supervised process in the container, so
+        // it must not also be kicked off by web requests.
+        ->runQueueAutomatically(false)
+        ->cacheDuration('P1W');
+}
+
+return $config;

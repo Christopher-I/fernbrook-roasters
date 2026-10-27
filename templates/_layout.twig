@@ -1,0 +1,56 @@
+{% import '_partials/image.twig' as img %}
+
+{% set metaTitle = seoTitleOverride ?? (entry is defined and entry.seoTitle ? entry.seoTitle : (title ?? (entry is defined ? entry.title : null))) %}
+{% set metaDescription = seoDescriptionOverride ?? (entry is defined and entry.seoDescription ? entry.seoDescription : (description ?? null)) %}
+
+<!DOCTYPE html>
+<html lang="{{ craft.app.language }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{ metaTitle ? metaTitle ~ ' | Fernbrook Roasters' : 'Fernbrook Roasters' }}</title>
+
+  {% if metaDescription %}
+    <meta name="description" content="{{ metaDescription }}">
+  {% endif %}
+
+  <link rel="canonical" href="{{ craft.app.request.absoluteUrl|split('?')|first }}">
+  <link rel="stylesheet" href="{{ alias('@web/css/site.css') }}?v={{ craft.app.config.general.cacheDuration }}">
+  <link rel="icon" href="{{ alias('@web/favicon.svg') }}" type="image/svg+xml">
+
+  <meta property="og:site_name" content="Fernbrook Roasters">
+  <meta property="og:title" content="{{ metaTitle ?? 'Fernbrook Roasters' }}">
+  {% if metaDescription %}<meta property="og:description" content="{{ metaDescription }}">{% endif %}
+  {% if entry is defined and entry.heroImage is defined and entry.heroImage.one() %}
+    <meta property="og:image" content="{{ entry.heroImage.one().getUrl('hero') }}">
+  {% endif %}
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  {% if siteSettings.announcementEnabled and siteSettings.announcementText %}
+    <div class="announcement">
+      {{ siteSettings.announcementText }}
+      {% if siteSettings.announcementLink %}
+        <a href="{{ siteSettings.announcementLink.url }}">Find out more</a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <header class="masthead">
+    <div class="wrap masthead__inner">
+      <a class="wordmark" href="{{ siteUrl }}">Fernbrook <span>Roasters</span></a>
+      {% include '_partials/nav.twig' %}
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="wrap">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  {% include '_partials/footer.twig' %}
+</body>
+</html>

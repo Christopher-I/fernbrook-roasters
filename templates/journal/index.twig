@@ -1,0 +1,52 @@
+{% extends '_layout.twig' %}
+{% import '_partials/image.twig' as img %}
+
+{% set title = 'Journal' %}
+{% set description = 'Notes on roasting, brewing and the two Fernbrook shops.' %}
+
+{# Eager loading earns its place here, where one query per article would
+   otherwise be run for the hero image and again for the topics. Measured
+   with the debug toolbar on page one: 95 queries with the .with() below,
+   109 without it. limit() sets entries per page, not the total. #}
+{% set query = craft.entries()
+  .section('journal')
+  .orderBy('postDate desc')
+  .limit(6)
+  .with(['heroImage', 'journalTopics']) %}
+
+{% paginate query as pageInfo, articles %}
+
+{% block content %}
+  <div class="hero">
+    <h1>Journal</h1>
+    <p class="hero__summary">{{ description }}</p>
+  </div>
+
+  {# Cached per page of results. Craft invalidates this automatically when any
+     element inside it is saved, deleted or has its status change, so a new
+     article clears it without anyone touching the cache. The 1 week duration
+     is only the backstop for content that never changes. #}
+  {% cache using key "journal-index-#{pageInfo.currentPage}" for 1 week %}
+    <ul class="cards cards--3">
+      {% for article in articles %}
+        {% set image = article.heroImage.one() %}
+        <li class="card">
+          {% if image %}
+            <a class="card__media" href="{{ article.url }}" tabindex="-1" aria-hidden="true">
+              {{ img.picture(image, 'card', '(min-width: 60rem) 22rem, (min-width: 38rem) 45vw, 100vw') }}
+            </a>
+          {% endif %}
+          <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+          <p>{{ article.standfirst|length > 140 ? article.standfirst[:140] ~ '…' : article.standfirst }}</p>
+          <p class="card__meta">
+            {{ article.postDate|date('j F Y') }}
+            {%- set topics = article.journalTopics.all() %}
+            {%- if topics %} &middot; {{ topics|map(t => t.title)|join(', ') }}{% endif %}
+          </p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endcache %}
+
+  {% include '_partials/pagination.twig' %}
+{% endblock %}

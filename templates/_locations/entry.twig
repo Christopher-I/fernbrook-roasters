@@ -1,0 +1,56 @@
+{% extends '_layout.twig' %}
+
+{% block content %}
+  {# Measured: 65 queries as written, 68 with a re-query and
+     .with(['heroImage', 'servicesOffered']). #}
+  {% include '_partials/hero.twig' with {
+    eyebrow: 'Visit',
+    heading: entry.title,
+    summary: entry.summary,
+    image: entry.heroImage.one(),
+  } only %}
+
+  <div class="split">
+    <div class="prose">
+      {{ entry.bodyText }}
+
+      {% set services = entry.servicesOffered.all() %}
+      {% if services %}
+        <h2>Available here</h2>
+        <ul>
+          {% for service in services %}
+            <li><a href="{{ service.url }}">{{ service.title }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    <aside>
+      <div class="panel">
+        <h2>Where</h2>
+        <address style="font-style:normal">
+          {{ entry.addressLine1 }}<br>
+          {% if entry.addressLine2 %}{{ entry.addressLine2 }}<br>{% endif %}
+          {{ entry.addressCity }}<br>
+          {{ entry.addressPostcode }}
+        </address>
+        {% if entry.mapUrl %}
+          <p><a href="{{ entry.mapUrl.url }}" rel="noopener">Open in maps</a></p>
+        {% endif %}
+      </div>
+
+      <h2 style="margin-top:2rem">Opening hours</h2>
+      <table class="hours">
+        <caption class="hp">Opening hours for {{ entry.title }}</caption>
+        <tbody>
+          {% for row in entry.openingHours %}
+            <tr>
+              <th scope="row">{{ row.day }}</th>
+              <td>{{ row.closed ? 'Closed' : row.opens ~ '–' ~ row.closes }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </aside>
+  </div>
+{% endblock %}

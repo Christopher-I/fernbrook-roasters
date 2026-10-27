@@ -1,0 +1,49 @@
+{% extends '_layout.twig' %}
+{% import '_partials/image.twig' as img %}
+
+{% set title = 'Services' %}
+{% set description = 'Wholesale coffee, barista training, equipment servicing and subscriptions, from a two-shop roastery in Ashworth.' %}
+
+{% block content %}
+  <div class="hero">
+    <h1>Services</h1>
+    <p class="hero__summary">{{ description }}</p>
+  </div>
+
+  {# Measured with the debug toolbar: 75 queries with the .with() below,
+     79 without it, on four top-level services with six children. #}
+  {% cache using key "services-index" for 1 week %}
+    {% set services = craft.entries()
+      .section('services')
+      .level(1)
+      .orderBy('lft asc')
+      .with(['heroImage', 'children'])
+      .all() %}
+
+    <ul class="cards cards--3">
+      {% for service in services %}
+        {% set image = service.heroImage.one() %}
+        <li class="card">
+          {% if image %}
+            <a class="card__media" href="{{ service.url }}" tabindex="-1" aria-hidden="true">
+              {{ img.picture(image, 'card', '(min-width: 60rem) 22rem, (min-width: 38rem) 45vw, 100vw') }}
+            </a>
+          {% endif %}
+          <h3><a href="{{ service.url }}">{{ service.title }}</a></h3>
+          <p>{{ service.summary }}</p>
+          {% if service.priceFrom %}
+            <p class="card__meta">From {{ service.priceFrom|money }}</p>
+          {% endif %}
+          {% set children = service.children.all() %}
+          {% if children %}
+            <ul class="topics">
+              {% for child in children %}
+                <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endcache %}
+{% endblock %}

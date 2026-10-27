@@ -1,0 +1,21 @@
+{% import '_partials/image.twig' as img %}
+{% set image = block.blockImage.one() %}
+
+{% if image %}
+  {% set width = block.imageWidth.value ?? 'inset' %}
+  {% set sizes = {
+    inset: '(min-width: 36rem) 34rem, 100vw',
+    wide:  '(min-width: 56rem) 56rem, 100vw',
+    full:  '(min-width: 72rem) 72rem, 100vw',
+  } %}
+
+  <figure class="block block--{{ width }}">
+    {{ img.picture(image, width == 'inset' ? 'card' : 'hero', sizes[width]) }}
+    {% if block.imageCaption or image.assetCredit %}
+      <figcaption>
+        {{ block.imageCaption }}
+        {{ img.credit(image) }}
+      </figcaption>
+    {% endif %}
+  </figure>
+{% endif %}

@@ -1,8 +1,15 @@
-dateModified: 1793128299
+dateModified: 1793128917
 email:
-  fromEmail: hello@fernbrookroasters.test
-  fromName: 'Fernbrook Roasters'
-  transportType: craft\mail\transportadapters\Sendmail
+  fromEmail: $MAIL_FROM_EMAIL
+  fromName: $MAIL_FROM_NAME
+  replyToEmail: $MAIL_FROM_EMAIL
+  transportSettings:
+    host: $MAIL_HOST
+    password: $MAIL_PASSWORD
+    port: $MAIL_PORT
+    useAuthentication: $MAIL_USE_AUTH
+    username: $MAIL_USERNAME
+  transportType: craft\mail\transportadapters\Smtp
 fs:
   documents:
     hasUrls: true

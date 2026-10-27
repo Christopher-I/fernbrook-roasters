@@ -1,0 +1,43 @@
+{% extends '_layout.twig' %}
+{% import '_partials/image.twig' as img %}
+
+{% set title = category.title %}
+{% set description = category.summary %}
+
+{% set query = craft.entries()
+  .section('journal')
+  .relatedTo(category)
+  .orderBy('postDate desc')
+  .limit(6)
+  .with(['heroImage']) %}
+
+{% paginate query as pageInfo, articles %}
+
+{% block content %}
+  <div class="hero">
+    <p class="eyebrow">Journal topic</p>
+    <h1>{{ category.title }}</h1>
+    {% if category.summary %}<p class="hero__summary">{{ category.summary }}</p>{% endif %}
+  </div>
+
+  <ul class="cards cards--3">
+    {% for article in articles %}
+      {% set image = article.heroImage.one() %}
+      <li class="card">
+        {% if image %}
+          <a class="card__media" href="{{ article.url }}" tabindex="-1" aria-hidden="true">
+            {{ img.picture(image, 'card', '(min-width: 60rem) 22rem, (min-width: 38rem) 45vw, 100vw') }}
+          </a>
+        {% endif %}
+        <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+        <p class="card__meta">{{ article.postDate|date('j F Y') }}</p>
+      </li>
+    {% else %}
+      <li><p>Nothing filed under this topic yet.</p></li>
+    {% endfor %}
+  </ul>
+
+  {% include '_partials/pagination.twig' %}
+
+  <p style="margin-top:2rem"><a href="{{ url('journal') }}">&larr; All articles</a></p>
+{% endblock %}

@@ -117,6 +117,7 @@ class SeedController extends Controller
         $volume = Craft::$app->getVolumes()->getVolumeByHandle('images');
         $folder = Craft::$app->getAssets()->getRootFolderByVolumeId($volume->id);
         $credits = json_decode(file_get_contents("$dir/credits.json"), true);
+        $altText = json_decode(file_get_contents("$dir/alt.json"), true);
 
         foreach (glob("$dir/*.jpg") as $path) {
             $filename = basename($path);
@@ -127,6 +128,13 @@ class SeedController extends Controller
                 ->one();
 
             if ($existing) {
+                // Keep alt text and credits in step with the seed data even
+                // when the file itself is already uploaded.
+                $existing->alt = $altText[$filename] ?? $existing->alt;
+                if (isset($credits[$filename])) {
+                    $existing->setFieldValue('assetCredit', $this->creditLine($credits[$filename]));
+                }
+                Craft::$app->getElements()->saveElement($existing);
                 $this->assets[$filename] = $existing;
                 continue;
             }
@@ -146,15 +154,10 @@ class SeedController extends Controller
             $asset->avoidFilenameConflicts = true;
             $asset->setScenario(Asset::SCENARIO_CREATE);
             $asset->title = AssetsHelper::filename2Title(pathinfo($filename, PATHINFO_FILENAME));
-            $asset->alt = $credit['title'] ?? $asset->title;
+            $asset->alt = $altText[$filename] ?? $asset->title;
 
             if ($credit) {
-                $asset->setFieldValue('assetCredit', sprintf(
-                    '%s by %s, %s',
-                    $credit['title'],
-                    $credit['artist'],
-                    $credit['licence'],
-                ));
+                $asset->setFieldValue('assetCredit', $this->creditLine($credit));
             }
 
             if (!Craft::$app->getElements()->saveElement($asset)) {
@@ -164,6 +167,16 @@ class SeedController extends Controller
             $this->assets[$filename] = $asset;
             $this->stdout("  $filename\n");
         }
+    }
+
+    /**
+     * @param array{title: string, artist: string, licence: string} $credit
+     */
+    private function creditLine(array $credit): string
+    {
+        $title = preg_replace('/\.(jpe?g|png|tiff?|gif|webp)$/i', '', $credit['title']);
+
+        return sprintf('%s by %s, %s', $title, $credit['artist'], $credit['licence']);
     }
 
     private function seedAuthor(array $spec): void

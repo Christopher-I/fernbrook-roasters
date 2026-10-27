@@ -1,0 +1,61 @@
+{% extends '_layout.twig' %}
+{% import '_partials/image.twig' as img %}
+
+{% block content %}
+  {# Measured: 78 queries as written, 82 with a re-query and
+     .with(['heroImage', 'children', 'relatedJournal', 'relatedJournal.heroImage']). #}
+  {% set parent = entry.parent %}
+
+  {% include '_partials/hero.twig' with {
+    eyebrow: parent ? parent.title : 'Services',
+    heading: entry.title,
+    summary: entry.summary,
+    image: entry.heroImage.one(),
+  } only %}
+
+  <div class="split">
+    <div class="prose">
+      {{ entry.bodyText }}
+
+      {% set children = entry.children.all() %}
+      {% if children %}
+        <h2>What this covers</h2>
+        <ul>
+          {% for child in children %}
+            <li><a href="{{ child.url }}">{{ child.title }}</a> &mdash; {{ child.summary }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+    <aside>
+      <div class="panel">
+        {% if entry.priceFrom %}
+          <h2>From {{ entry.priceFrom|money }}</h2>
+        {% else %}
+          <h2>Priced per job</h2>
+        {% endif %}
+        <p>Tell us what you need and we will come back with a number. No contract and no minimum term.</p>
+        <p><a class="button" href="{{ url('contact') }}">Enquire about this</a></p>
+      </div>
+
+      {% set related = entry.relatedJournal.all() %}
+      {% if related %}
+        <h2 style="margin-top:2rem">Further reading</h2>
+        <ul class="cards">
+          {% for article in related %}
+            {% set image = article.heroImage.one() %}
+            <li class="card">
+              {% if image %}
+                <a class="card__media" href="{{ article.url }}" tabindex="-1" aria-hidden="true">
+                  {{ img.picture(image, 'thumb', '(min-width: 52rem) 16rem, 45vw') }}
+                </a>
+              {% endif %}
+              <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </aside>
+  </div>
+{% endblock %}

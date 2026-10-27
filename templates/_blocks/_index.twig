@@ -1,0 +1,22 @@
+{# Renders the page builder.
+
+   Craft 5 eager-loads the blocks' own relations when they are read inside
+   this loop, so the images in blockImage blocks cost one query for the set
+   rather than one each. See templates/_pages/entry.twig for the numbers. #}
+
+{% for block in blocks %}
+  {% switch block.type.handle %}
+    {% case 'blockRichText' %}
+      {% include '_blocks/rich-text.twig' %}
+    {% case 'blockImage' %}
+      {% include '_blocks/image.twig' %}
+    {% case 'blockTwoColumn' %}
+      {% include '_blocks/two-column.twig' %}
+    {% case 'blockCta' %}
+      {% include '_blocks/cta.twig' %}
+    {% case 'blockPullQuote' %}
+      {% include '_blocks/pull-quote.twig' %}
+    {% case 'blockForm' %}
+      {% include '_blocks/form.twig' %}
+  {% endswitch %}
+{% endfor %}

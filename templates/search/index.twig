@@ -1,0 +1,49 @@
+{% extends '_layout.twig' %}
+
+{% set q = craft.app.request.getParam('q')|trim %}
+{% set title = q ? 'Search: ' ~ q : 'Search' %}
+
+{% block content %}
+  <div class="hero">
+    <h1>Search</h1>
+    <p class="hero__summary">Articles, services and locations across the site.</p>
+  </div>
+
+  <form class="search-form" action="{{ url('search') }}" method="get" role="search" style="margin-bottom:2.5rem">
+    <label class="hp" for="q">Search terms</label>
+    <input type="search" id="q" name="q" value="{{ q }}" autofocus>
+    <button class="button" type="submit">Search</button>
+  </form>
+
+  {% if q %}
+    {# Craft's own search index, across the three sections worth searching.
+       Results are not cached: the query string varies per visitor. #}
+    {% set results = craft.entries()
+      .section(['journal', 'services', 'locations', 'pages'])
+      .search(q)
+      .orderBy('score desc')
+      .limit(30)
+      .all() %}
+
+    <p>{{ results|length }} result{{ results|length == 1 ? '' : 's' }} for &ldquo;{{ q }}&rdquo;.</p>
+
+    {% if results %}
+      <ul class="cards cards--3">
+        {% for result in results %}
+          <li class="card">
+            <p class="eyebrow">{{ result.section.name }}</p>
+            <h3><a href="{{ result.url }}">{{ result.title }}</a></h3>
+            {% if result.summary is defined and result.summary %}
+              <p>{{ result.summary }}</p>
+            {% elseif result.standfirst is defined and result.standfirst %}
+              <p>{{ result.standfirst }}</p>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Nothing matched. Try a single word, such as <a href="{{ url('search', {q: 'espresso'}) }}">espresso</a>
+        or <a href="{{ url('search', {q: 'wholesale'}) }}">wholesale</a>.</p>
+    {% endif %}
+  {% endif %}
+{% endblock %}

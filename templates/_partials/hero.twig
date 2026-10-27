@@ -1,0 +1,26 @@
+{% import '_partials/image.twig' as img %}
+
+{# eyebrow, heading, summary and image are passed in by the including template. #}
+<div class="hero">
+  {% if image %}
+    <div class="hero__media">
+      {# The hero is the largest contentful paint on most pages, so it is the
+         one image that is eagerly loaded and given fetchpriority. #}
+      {{ img.picture(image, 'hero', '(min-width: 72rem) 72rem, 100vw', 'eager') }}
+    </div>
+  {% endif %}
+
+  {% if eyebrow is defined and eyebrow %}
+    <p class="eyebrow">{{ eyebrow }}</p>
+  {% endif %}
+
+  <h1>{{ heading }}</h1>
+
+  {% if summary is defined and summary %}
+    <p class="hero__summary">{{ summary }}</p>
+  {% endif %}
+
+  {% if image %}
+    {{ img.credit(image) }}
+  {% endif %}
+</div>

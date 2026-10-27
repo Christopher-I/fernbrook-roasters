@@ -1,0 +1,19 @@
+{% extends '_layout.twig' %}
+
+{% block content %}
+  {# Craft 5 eager-loads relations automatically when they are accessed in a
+     loop, so there is no .with() here and no second query for the entry.
+     Measured with the debug toolbar on the home page: 69 queries as
+     written, 73 if the entry is re-queried with
+     .with(['heroImage', 'pageBuilder', 'pageBuilder.blockImage']).
+     The manual hint costs four queries and saves none, so it is not used.
+     See templates/journal/index.twig for where it does still earn its place. #}
+
+  {% include '_partials/hero.twig' with {
+    heading: entry.title,
+    summary: entry.summary,
+    image: entry.heroImage.one(),
+  } only %}
+
+  {% include '_blocks/_index.twig' with { blocks: entry.pageBuilder.all() } %}
+{% endblock %}

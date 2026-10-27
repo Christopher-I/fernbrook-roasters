@@ -1,0 +1,27 @@
+{# Responsive image macro.
+   Named transforms (hero, card, thumb) are defined in the control panel under
+   Settings > Assets > Image Transforms, so sizes can be retuned there without
+   touching any template. Each transform outputs WebP; srcset covers 1x to 2x
+   and `sizes` tells the browser how wide the image will actually render. #}
+
+{% macro picture(asset, transform, sizes, loading, className) %}
+  {%- if asset -%}
+    <img
+      src="{{ asset.getUrl(transform) }}"
+      srcset="{{ asset.getSrcset(['1x', '1.5x', '2x'], transform) }}"
+      sizes="{{ sizes ?? '100vw' }}"
+      width="{{ asset.getWidth(transform) }}"
+      height="{{ asset.getHeight(transform) }}"
+      alt="{{ asset.alt ?? asset.title }}"
+      loading="{{ loading ?? 'lazy' }}"
+      decoding="async"
+      {% if className %}class="{{ className }}"{% endif %}>
+  {%- endif -%}
+{% endmacro %}
+
+{# The licence line for a Creative Commons image, stored on the asset itself. #}
+{% macro credit(asset) %}
+  {%- if asset and asset.assetCredit -%}
+    <span class="credit">{{ asset.assetCredit }}</span>
+  {%- endif -%}
+{% endmacro %}

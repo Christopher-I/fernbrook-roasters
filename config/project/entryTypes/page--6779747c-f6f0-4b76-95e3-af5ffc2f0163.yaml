@@ -9,6 +9,34 @@ fieldLayouts:
         elementCondition: null
         elements:
           -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            required: true
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\entries\EntryTitleField
+            uid: 7be1816c-e8ec-4db8-aebb-913eb1dc8fa3
+            userCondition: null
+            warning: null
+            width: 100
+          -
             dateAdded: null
             editCondition: null
             elementCondition: null
@@ -21,7 +49,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 4a73abca-d851-4775-8117-9be2775b09ad
+            uid: 683e99d4-8671-416c-8eb3-4eb2ccba333a
             userCondition: null
             warning: null
             width: 100
@@ -38,7 +66,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: b3d37461-6c69-42be-ba0b-f2c3fc1ce035
+            uid: 01fe66e1-41da-4e89-800d-2aed378eb0ee
             userCondition: null
             warning: null
             width: 100
@@ -55,12 +83,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 58148e27-125a-4673-94cf-b3d9b83f6c6c
+            uid: cd863904-3cab-45e5-982b-8079a8d97ffc
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: a8de7454-a4f3-400b-9db6-68819543faaa
+        uid: 7599a7ef-e11c-44a5-9cd0-fde98f56b1c9
         userCondition: null
       -
         elementCondition: null
@@ -78,12 +106,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 9893d597-4e50-436c-b145-9912d3de55bd
+            uid: 18552a31-f48a-405d-804a-9f1a3e792958
             userCondition: null
             warning: null
             width: 100
         name: Navigation
-        uid: 7d25b104-7b13-4032-8cf6-6d68176d01bd
+        uid: 490bce58-0838-4c8b-ba2c-28450fc7ed09
         userCondition: null
       -
         elementCondition: null
@@ -101,7 +129,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 63ca3775-271b-49ef-a780-dc6a44434737
+            uid: 509178dc-be0f-47f4-9b5e-a6c282b67498
             userCondition: null
             warning: null
             width: 100
@@ -118,16 +146,16 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: be1d4df3-48a6-4159-9459-a84a0fdceded
+            uid: 9f267fd5-58f0-4048-b4fe-f2f9402316bb
             userCondition: null
             warning: null
             width: 100
         name: SEO
-        uid: 05a22d40-6f30-4f54-9a98-a48a49a06c2c
+        uid: 08fd4b91-81a3-4a1e-9347-bca33c3a76c1
         userCondition: null
     thumbFieldKey: null
 handle: page
-hasTitleField: false
+hasTitleField: true
 icon: file-lines
 name: Page
 showSlugField: true

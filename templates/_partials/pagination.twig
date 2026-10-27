@@ -1,0 +1,27 @@
+{% if pageInfo.totalPages > 1 %}
+  <nav class="pagination" aria-label="Pagination">
+    <div>
+      {% if pageInfo.prevUrl %}
+        <a href="{{ pageInfo.prevUrl }}" rel="prev">&larr; Newer</a>
+      {% endif %}
+    </div>
+
+    <ul class="pagination__pages">
+      {% for page, pageUrl in pageInfo.getDynamicRangeUrls(5) %}
+        <li>
+          {% if page == pageInfo.currentPage %}
+            <span aria-current="page">{{ page }}</span>
+          {% else %}
+            <a href="{{ pageUrl }}">{{ page }}</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+
+    <div>
+      {% if pageInfo.nextUrl %}
+        <a href="{{ pageInfo.nextUrl }}" rel="next">Older &rarr;</a>
+      {% endif %}
+    </div>
+  </nav>
+{% endif %}

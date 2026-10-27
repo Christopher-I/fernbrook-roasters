@@ -13,6 +13,7 @@ use craft\elements\Entry;
 use craft\elements\GlobalSet;
 use craft\elements\User;
 use craft\fieldlayoutelements\CustomField;
+use craft\fieldlayoutelements\entries\EntryTitleField;
 use craft\fields\Assets;
 use craft\fields\Categories;
 use craft\fields\conditions\LightswitchFieldConditionRule;
@@ -28,6 +29,7 @@ use craft\fields\PlainText;
 use craft\fields\Table;
 use craft\fields\Users;
 use craft\fs\Local;
+use craft\mail\transportadapters\Smtp;
 use craft\models\CategoryGroup;
 use craft\models\CategoryGroup_SiteSettings;
 use craft\models\EntryType;
@@ -76,6 +78,7 @@ class SchemaController extends Controller
         $this->buildSections();
         $this->buildGlobals();
         $this->buildUserLayout();
+        $this->buildMailSettings();
 
         $this->stdout("\nDone. Review config/project/ and commit it.\n");
 
@@ -701,6 +704,32 @@ class SchemaController extends Controller
         $this->stdout("  user field layout and photo volume\n");
     }
 
+    /**
+     * Mail goes through SMTP in every environment: Mailpit locally, a
+     * transactional provider in production. The credentials stay in .env, so
+     * only the variable names reach project config.
+     */
+    private function buildMailSettings(): void
+    {
+        $this->stdout("Mail\n");
+
+        $projectConfig = Craft::$app->getProjectConfig();
+
+        $projectConfig->set('email.fromEmail', '$MAIL_FROM_EMAIL');
+        $projectConfig->set('email.fromName', '$MAIL_FROM_NAME');
+        $projectConfig->set('email.replyToEmail', '$MAIL_FROM_EMAIL');
+        $projectConfig->set('email.transportType', Smtp::class);
+        $projectConfig->set('email.transportSettings', [
+            'host' => '$MAIL_HOST',
+            'port' => '$MAIL_PORT',
+            'useAuthentication' => '$MAIL_USE_AUTH',
+            'username' => '$MAIL_USERNAME',
+            'password' => '$MAIL_PASSWORD',
+        ]);
+
+        $this->stdout("  SMTP transport\n");
+    }
+
     // -----------------------------------------------------------------
     // Helpers
     // -----------------------------------------------------------------
@@ -819,9 +848,19 @@ class SchemaController extends Controller
         $entryType->showSlugField = $config['showSlugField'] ?? ($config['hasTitleField'] ?? true);
         $entryType->icon = $config['icon'] ?? null;
 
+        $tabs = $config['tabs'];
+
+        // In Craft 5 the Title field is a field layout element, and an entry
+        // type only counts as having a title field if its layout contains
+        // one. Matrix block types opt out via hasTitleField => false.
+        if ($entryType->hasTitleField) {
+            $firstTab = array_key_first($tabs);
+            $tabs[$firstTab] = array_merge([new EntryTitleField()], $tabs[$firstTab]);
+        }
+
         $entryType->setFieldLayout($this->layout(
             Entry::class,
-            $config['tabs'],
+            $tabs,
             $entryType->getFieldLayout(),
         ));
 

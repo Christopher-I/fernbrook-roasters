@@ -1,0 +1,41 @@
+{% extends '_layout.twig' %}
+{% import '_partials/image.twig' as img %}
+
+{% set title = 'Visit' %}
+{% set description = 'Fernbrook Roasters has two shops: the roastery at Arch 14 in Ashworth, and Millgate in Netherfield.' %}
+
+{% block content %}
+  <div class="hero">
+    <h1>Visit</h1>
+    <p class="hero__summary">{{ description }}</p>
+  </div>
+
+  {# Only two locations, so eager loading measures the same either way (64
+     queries). It stays because the saving grows with the list, and because
+     a third shop should not quietly add queries. #}
+  {% cache using key "locations-index" for 1 week %}
+    {% set locations = craft.entries()
+      .section('locations')
+      .orderBy('title asc')
+      .with(['heroImage'])
+      .all() %}
+
+    <ul class="cards">
+      {% for location in locations %}
+        {% set image = location.heroImage.one() %}
+        <li class="card">
+          {% if image %}
+            <a class="card__media" href="{{ location.url }}" tabindex="-1" aria-hidden="true">
+              {{ img.picture(image, 'card', '(min-width: 38rem) 45vw, 100vw') }}
+            </a>
+          {% endif %}
+          <h3><a href="{{ location.url }}">{{ location.title }}</a></h3>
+          <p>{{ location.summary }}</p>
+          <p class="card__meta">
+            {{ location.addressLine1 }}, {{ location.addressCity }} {{ location.addressPostcode }}
+          </p>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endcache %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{# buttonLabel and buttonLink only exist on the block when the editor turned
+   "Show a button" on, which is enforced by a conditional field in the block's
+   field layout rather than by this template. #}
+
+<div class="block cta">
+  <h2>{{ block.ctaHeading }}</h2>
+  {% if block.ctaText %}<p>{{ block.ctaText|nl2br }}</p>{% endif %}
+
+  {% if block.showButton and block.buttonLink %}
+    <a class="button" href="{{ block.buttonLink.url }}">{{ block.buttonLabel }}</a>
+  {% endif %}
+</div>

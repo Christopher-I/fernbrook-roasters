@@ -1,0 +1,33 @@
+{# Top-level Pages that are not hidden, plus the three section listings.
+   Eager loading is pointless here (no related elements are touched) but the
+   query is cached, because the navigation only changes when a page does. #}
+
+{% cache globally using key "nav" for 1 week %}
+  {% set navPages = craft.entries()
+    .section('pages')
+    .level(1)
+    .hideFromNav(false)
+    .orderBy('lft asc')
+    .all() %}
+
+  <nav class="nav" aria-label="Main">
+    <ul>
+      {% for page in navPages %}
+        {% if page.uri != '__home__' %}
+          <li>
+            <a href="{{ page.url }}"{{ craft.app.request.absoluteUrl starts with page.url ? ' aria-current="page"' : '' }}>{{ page.title }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+      <li><a href="{{ url('services') }}">Services</a></li>
+      <li><a href="{{ url('visit') }}">Visit</a></li>
+      <li><a href="{{ url('journal') }}">Journal</a></li>
+    </ul>
+  </nav>
+{% endcache %}
+
+<form class="search-form" action="{{ url('search') }}" method="get" role="search">
+  <label class="hp" for="site-search">Search this site</label>
+  <input type="search" id="site-search" name="q" placeholder="Search" value="{{ craft.app.request.getParam('q') }}">
+  <button class="button" type="submit">Go</button>
+</form>

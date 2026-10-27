@@ -18,7 +18,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 02a34098-79ac-43b5-aec9-4fd0e7c47083
+            uid: 2e823d49-756e-46cf-b7d2-3ea4a5f6c107
             userCondition: null
             warning: null
             width: 50
@@ -35,7 +35,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 342fd80c-7812-4795-ac50-20a691931ea7
+            uid: 9185ebfc-1bee-4d14-90c4-c0732288c4e9
             userCondition: null
             warning: null
             width: 50
@@ -52,7 +52,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: f1c66d7a-1667-4bcf-9d5c-140c97acabda
+            uid: 90939fa0-26f3-4c6e-b041-91277e72c7af
             userCondition: null
             warning: null
             width: 100
@@ -69,12 +69,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 6fbfd6a3-b3e1-4bc4-954e-43d6c71ca8ba
+            uid: 1afde659-672f-412f-967d-13ee8f4894fd
             userCondition: null
             warning: null
             width: 100
         name: Contact
-        uid: 799faddd-cd91-4c55-887d-0492a0a121be
+        uid: 21501bd9-b331-41c6-b62f-225039a9f70a
         userCondition: null
       -
         elementCondition: null
@@ -92,7 +92,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 6a565111-b80c-4efb-806c-c2f0d40a22ef
+            uid: e260cc14-4f73-41b7-9a43-2ddc5f899acc
             userCondition: null
             warning: null
             width: 100
@@ -105,7 +105,7 @@ fieldLayouts:
                 -
                   class: craft\fields\conditions\LightswitchFieldConditionRule
                   fieldUid: 20aa30f9-8491-47a0-b8f7-25f8f9060040 # Show the announcement bar
-                  uid: a9da4ada-34eb-4640-8c86-200230d72d90
+                  uid: e70d6cfc-fd8e-402b-8051-3661bc9372ec
                   value: true
               elementType: craft\elements\GlobalSet
               fieldContext: global
@@ -118,7 +118,7 @@ fieldLayouts:
             required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: e349b722-b7b5-41bf-ab16-ea4f75af0404
+            uid: 0505d4cf-713b-4131-a070-35a0c7b215f2
             userCondition: null
             warning: null
             width: 100
@@ -131,7 +131,7 @@ fieldLayouts:
                 -
                   class: craft\fields\conditions\LightswitchFieldConditionRule
                   fieldUid: 20aa30f9-8491-47a0-b8f7-25f8f9060040 # Show the announcement bar
-                  uid: 819ac60c-4366-4603-943c-d2845046964b
+                  uid: e29d5436-ffa9-4bf3-a373-620ff9467bff
                   value: true
               elementType: craft\elements\GlobalSet
               fieldContext: global
@@ -144,12 +144,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 23c94137-5793-48fa-81eb-353058188316
+            uid: f15098da-9fd8-4233-b065-0ce513288eea
             userCondition: null
             warning: null
             width: 100
         name: 'Announcement bar'
-        uid: f7703bf3-0777-4818-a712-856fb662e7de
+        uid: 39e9f967-3310-4c92-8ddd-10352cf76b3a
         userCondition: null
     thumbFieldKey: null
 handle: siteSettings

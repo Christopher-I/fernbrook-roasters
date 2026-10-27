@@ -1,0 +1,43 @@
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div>
+        <h2>Fernbrook Roasters</h2>
+        <address>{{ siteSettings.postalAddress }}</address>
+      </div>
+
+      <div>
+        <h2>Get in touch</h2>
+        <ul>
+          {% if siteSettings.contactPhone %}
+            <li><a href="tel:{{ siteSettings.contactPhone|replace({' ': ''}) }}">{{ siteSettings.contactPhone }}</a></li>
+          {% endif %}
+          {% if siteSettings.contactEmail %}
+            <li><a href="mailto:{{ siteSettings.contactEmail }}">{{ siteSettings.contactEmail }}</a></li>
+          {% endif %}
+          {% for row in siteSettings.socialLinks %}
+            <li><a href="{{ row.url }}" rel="me noopener">{{ row.network }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div>
+        <h2>Visit</h2>
+        {% cache globally using key "footer-locations" for 1 week %}
+          <ul>
+            {% for location in craft.entries().section('locations').orderBy('title asc').all() %}
+              <li><a href="{{ location.url }}">{{ location.title }}</a>, {{ location.addressCity }}</li>
+            {% endfor %}
+            <li><a href="{{ url('privacy') }}">Privacy</a></li>
+          </ul>
+        {% endcache %}
+      </div>
+    </div>
+
+    <p class="colophon">
+      Fernbrook Roasters is a fictional business, built as a Craft CMS demonstration site.
+      The name, addresses, telephone number and people are invented. Photographs are
+      Creative Commons or public domain and credited where they appear.
+    </p>
+  </div>
+</footer>

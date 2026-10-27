@@ -21,7 +21,7 @@ fieldLayouts:
             required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 50dccd9b-f4c2-49b1-9189-dac8873b1412
+            uid: d7146757-e8b1-45ec-a96a-23293bbdaf30
             userCondition: null
             warning: null
             width: 100
@@ -38,7 +38,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 1e970c3f-88d1-4134-a3d4-9f8e150abbd3
+            uid: bbefe5c3-d7e1-46b9-b771-3c1402e6022f
             userCondition: null
             warning: null
             width: 100
@@ -55,7 +55,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 05f09fbd-5740-461c-97af-0951e76c6315
+            uid: 711c5750-7534-4f92-8349-0707ca731a83
             userCondition: null
             warning: null
             width: 100
@@ -68,7 +68,7 @@ fieldLayouts:
                 -
                   class: craft\fields\conditions\LightswitchFieldConditionRule
                   fieldUid: 694c7fcc-886f-49b7-8508-45eeac12636f # Show a button
-                  uid: 22c6808e-422c-4f57-b97b-bf8d84ebe588
+                  uid: 45a21e3e-32fa-43ae-8f28-4484a3a6f352
                   value: true
               elementType: craft\elements\Entry
               fieldContext: global
@@ -81,7 +81,7 @@ fieldLayouts:
             required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: bcb104b5-5ee7-43be-b174-adf7a6098181
+            uid: 14d9a157-de57-4a55-bfde-c2a6d86be7c6
             userCondition: null
             warning: null
             width: 50
@@ -94,7 +94,7 @@ fieldLayouts:
                 -
                   class: craft\fields\conditions\LightswitchFieldConditionRule
                   fieldUid: 694c7fcc-886f-49b7-8508-45eeac12636f # Show a button
-                  uid: 39e0a2ae-171b-4116-8d7b-f320d64f9738
+                  uid: f9afa108-1d3d-4a42-a9d7-9be79e88f50d
                   value: true
               elementType: craft\elements\Entry
               fieldContext: global
@@ -107,12 +107,12 @@ fieldLayouts:
             required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 858f464e-900a-4662-af5f-d2404e54e75f
+            uid: be688f73-feb7-4176-842d-46a781609f99
             userCondition: null
             warning: null
             width: 50
         name: Content
-        uid: cc25f93d-a235-4651-a44a-d0f3df055ba7
+        uid: dc84941d-054b-4777-b105-12a9d90c98df
         userCondition: null
     thumbFieldKey: null
 handle: blockCta
