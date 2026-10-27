@@ -39,6 +39,7 @@ use craft\models\ImageTransform;
 use craft\models\Section;
 use craft\models\Section_SiteSettings;
 use craft\models\Volume;
+use ReflectionClass;
 use RuntimeException;
 use yii\console\ExitCode;
 
@@ -146,7 +147,7 @@ class SchemaController extends Controller
                 ? [new CustomField($altField), new CustomField($creditField)]
                 : [];
 
-            $volume->setFieldLayout($this->layout(Asset::class, [
+            $volume->setFieldLayout($this->layout("volume.{$spec['handle']}", Asset::class, [
                 'Content' => $elements,
             ], $volume->getFieldLayout()));
 
@@ -217,7 +218,7 @@ class SchemaController extends Controller
         }
         $group->setSiteSettings($siteSettings);
 
-        $group->setFieldLayout($this->layout(Category::class, [
+        $group->setFieldLayout($this->layout('categoryGroup.journalTopics', Category::class, [
             'Content' => [
                 new CustomField($this->plainText('summary', 'Summary', [
                     'instructions' => 'One or two sentences. Used on listing pages and in search results.',
@@ -658,7 +659,7 @@ class SchemaController extends Controller
         $announcementLink = new CustomField($this->fields['announcementLink']);
         $announcementLink->setElementCondition($announcementCondition);
 
-        $set->setFieldLayout($this->layout(GlobalSet::class, [
+        $set->setFieldLayout($this->layout('globalSet.siteSettings', GlobalSet::class, [
             'Contact' => [
                 new CustomField($this->fields['contactPhone'], ['width' => 50]),
                 new CustomField($this->fields['contactEmail'], ['width' => 50]),
@@ -683,7 +684,7 @@ class SchemaController extends Controller
     {
         $this->stdout("Users\n");
 
-        $layout = $this->layout(User::class, [
+        $layout = $this->layout('user', User::class, [
             'Profile' => [
                 new CustomField($this->fields['userRole']),
                 new CustomField($this->fields['userBio']),
@@ -859,6 +860,7 @@ class SchemaController extends Controller
         }
 
         $entryType->setFieldLayout($this->layout(
+            "entryType.$handle",
             Entry::class,
             $tabs,
             $entryType->getFieldLayout(),
@@ -913,9 +915,18 @@ class SchemaController extends Controller
     }
 
     /**
+     * Builds a field layout from a map of tab name to layout elements.
+     *
+     * Craft 5 keys an element's stored content by the UUID of the *field
+     * layout element*, not of the field. A layout element built fresh on
+     * every run would get a fresh UUID, and every value already entered
+     * against the old one would be orphaned. So each element and tab gets a
+     * UUID derived from the owner and the field handle: rebuilding the model
+     * on top of existing content leaves that content attached.
+     *
      * @param array<string, array> $tabs
      */
-    private function layout(string $elementType, array $tabs, ?FieldLayout $existing = null): FieldLayout
+    private function layout(string $ownerKey, string $elementType, array $tabs, ?FieldLayout $existing = null): FieldLayout
     {
         $layout = new FieldLayout(['type' => $elementType]);
 
@@ -930,9 +941,20 @@ class SchemaController extends Controller
         $layoutTabs = [];
 
         foreach ($tabs as $tabName => $elements) {
+            foreach ($elements as $element) {
+                $element->uid = $this->stableUid(sprintf(
+                    '%s.%s',
+                    $ownerKey,
+                    $element instanceof CustomField
+                        ? 'field.' . $element->getField()->handle
+                        : 'native.' . (new ReflectionClass($element))->getShortName(),
+                ));
+            }
+
             $tab = new FieldLayoutTab([
                 'name' => $tabName,
                 'sortOrder' => $sortOrder++,
+                'uid' => $this->stableUid("$ownerKey.tab.$tabName"),
             ]);
             // The tab needs to know its layout before elements are attached.
             $tab->setLayout($layout);
@@ -943,6 +965,24 @@ class SchemaController extends Controller
         $layout->setTabs($layoutTabs);
 
         return $layout;
+    }
+
+    /**
+     * A stable, well-formed UUID derived from a string, so the same input
+     * always produces the same identifier.
+     */
+    private function stableUid(string $seed): string
+    {
+        $hash = md5('fernbrook-roasters:' . $seed);
+
+        return sprintf(
+            '%s-%s-5%s-8%s-%s',
+            substr($hash, 0, 8),
+            substr($hash, 8, 4),
+            substr($hash, 13, 3),
+            substr($hash, 17, 3),
+            substr($hash, 20, 12),
+        );
     }
 
     private function sectionUid(string $handle): ?string

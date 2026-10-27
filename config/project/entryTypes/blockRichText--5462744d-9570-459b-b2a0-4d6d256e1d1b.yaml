@@ -21,12 +21,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 9c312af1-3eaa-42a9-be3a-f6da3d1f1573
+            uid: c2d447cd-affb-5daa-89b9-44fdac1136ab
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: af2cd0b7-e59a-4b66-b927-0854b9e76cd8
+        uid: 71c85775-e5fc-595b-89dc-04599230b48b
         userCondition: null
     thumbFieldKey: null
 handle: blockRichText

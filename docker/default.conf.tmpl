@@ -1,0 +1,62 @@
+server {
+    listen ${PORT} default_server;
+    server_name _;
+
+    root  /var/www/html/web;
+    index index.html index.php;
+
+    charset utf-8;
+
+    # Railway terminates TLS at the edge; trust its forwarded scheme.
+    set $forwarded_scheme $scheme;
+    if ($http_x_forwarded_proto = "https") {
+        set $forwarded_scheme https;
+    }
+
+    # Craft control panel assets and uploads are static; everything else
+    # falls through to index.php so Craft can route it.
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    # Uploaded assets live on the mounted volume via a symlink.
+    location /uploads/ {
+        access_log off;
+        expires 30d;
+        add_header Cache-Control "public, immutable";
+        try_files $uri =404;
+    }
+
+    location ~* \.(?:css|js|woff2?|ttf|eot|svg|ico|jpg|jpeg|png|gif|webp|avif)$ {
+        access_log off;
+        expires 7d;
+        add_header Cache-Control "public";
+        try_files $uri /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_param PATH_INFO $fastcgi_path_info;
+        fastcgi_param HTTPS $forwarded_scheme;
+        fastcgi_param REQUEST_SCHEME $forwarded_scheme;
+        fastcgi_read_timeout 300;
+        fastcgi_buffers 16 16k;
+        fastcgi_buffer_size 32k;
+    }
+
+    # Never serve dotfiles or the project's non-public directories.
+    location ~ /\.(?!well-known) {
+        deny all;
+    }
+
+    location = /health {
+        access_log off;
+        default_type text/plain;
+        return 200 "ok\n";
+    }
+}
