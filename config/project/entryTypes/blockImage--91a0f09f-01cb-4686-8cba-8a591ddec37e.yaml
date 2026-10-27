@@ -21,7 +21,7 @@ fieldLayouts:
             required: true
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 20d632f5-f372-4564-968a-19f28511f9af
+            uid: e83c55af-b7ca-4747-b204-a4cf75539a43
             userCondition: null
             warning: null
             width: 100
@@ -38,7 +38,7 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: 17960ec5-929e-4e92-8507-aefe1eeebf2d
+            uid: 43b4268b-9ad4-4cc7-8849-bc815c5a4ebb
             userCondition: null
             warning: null
             width: 100
@@ -55,12 +55,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: b8cfdd48-04f3-4adb-8038-826eccce94a9
+            uid: af3d0f96-4e95-4e2e-985f-90228524b4c0
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: 05975fab-7eeb-46eb-916b-ee63cb6fe3d1
+        uid: 33a2f484-d1c0-4a58-8cd5-060472450a78
         userCondition: null
     thumbFieldKey: null
 handle: blockImage

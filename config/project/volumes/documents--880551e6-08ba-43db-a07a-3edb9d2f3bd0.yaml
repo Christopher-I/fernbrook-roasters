@@ -31,12 +31,12 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\assets\AssetTitleField
-            uid: 93780a2c-cda1-491c-9482-ae000333f8e2
+            uid: cb3185d1-239e-4e69-a605-566f90bf57ac
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: fdadee2b-caf8-40ce-8e30-0b7e6c37afb5
+        uid: ac5381b0-3015-4e4a-9a53-3fb3bd89337a
         userCondition: null
     thumbFieldKey: null
 fs: documents

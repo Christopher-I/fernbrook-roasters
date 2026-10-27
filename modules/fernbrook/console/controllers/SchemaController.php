@@ -693,7 +693,12 @@ class SchemaController extends Controller
             throw new RuntimeException('User field layout: ' . $this->errors($layout));
         }
 
-        $this->stdout("  user field layout\n");
+        // Craft needs somewhere to put user photos before one can be set.
+        $projectConfig = Craft::$app->getProjectConfig();
+        $projectConfig->set('users.photoVolumeUid', Craft::$app->getVolumes()->getVolumeByHandle('images')->uid);
+        $projectConfig->set('users.photoSubpath', 'people');
+
+        $this->stdout("  user field layout and photo volume\n");
     }
 
     // -----------------------------------------------------------------
@@ -791,6 +796,14 @@ class SchemaController extends Controller
             'name' => $name,
             'types' => ['entry', 'url', 'email', 'tel'],
             'showLabelField' => false,
+            // Root-relative URLs let an editor point at a listing page such
+            // as /journal, which has a template but no entry behind it.
+            'typeSettings' => [
+                'url' => [
+                    'allowRootRelativeUrls' => true,
+                    'allowAnchors' => true,
+                ],
+            ],
         ]);
     }
 

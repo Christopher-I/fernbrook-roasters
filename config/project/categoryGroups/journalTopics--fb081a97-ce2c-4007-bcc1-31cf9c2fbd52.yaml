@@ -30,7 +30,7 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\TitleField
-            uid: 06b0e0f1-cfd7-4bfd-a46c-673cc3eca077
+            uid: 644bcc0e-d91e-4484-926a-04b875dd8bcf
             userCondition: null
             warning: null
             width: 100
@@ -47,12 +47,12 @@ fieldLayouts:
             required: false
             tip: null
             type: craft\fieldlayoutelements\CustomField
-            uid: e5e5c869-53f4-4dc7-8877-26425fcb22ff
+            uid: 5dd6995b-73bf-4ce2-82c0-723a60435aa6
             userCondition: null
             warning: null
             width: 100
         name: Content
-        uid: ff79d550-795a-4361-a36f-c6bf79d220ca
+        uid: 65ca7e98-7a64-4108-af1f-546025aabdc1
         userCondition: null
     thumbFieldKey: null
 handle: journalTopics

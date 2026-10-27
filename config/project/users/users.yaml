@@ -1,6 +1,6 @@
 allowPublicRegistration: false
 defaultGroup: null
-photoSubpath: null
-photoVolumeUid: null
+photoSubpath: people
+photoVolumeUid: 4e3cf8dc-d089-420c-81a4-01802feb4264 # Images
 require2fa: false
 requireEmailVerification: true
