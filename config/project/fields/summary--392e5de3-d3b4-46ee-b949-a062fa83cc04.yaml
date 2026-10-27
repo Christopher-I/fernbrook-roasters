@@ -1,0 +1,16 @@
+columnSuffix: null
+handle: summary
+instructions: 'One or two sentences. Used on listing pages and in search results.'
+name: Summary
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  initialRows: 3
+  multiline: true
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

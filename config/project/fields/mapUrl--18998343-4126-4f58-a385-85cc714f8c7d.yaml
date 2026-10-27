@@ -1,0 +1,14 @@
+columnSuffix: null
+handle: mapUrl
+instructions: 'A link to this address on a maps service.'
+name: 'Map link'
+searchable: false
+settings:
+  fullGraphqlData: true
+  maxLength: 255
+  showLabelField: false
+  types:
+    - url
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Link

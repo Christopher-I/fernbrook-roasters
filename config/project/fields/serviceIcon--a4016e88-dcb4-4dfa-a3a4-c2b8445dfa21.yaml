@@ -1,0 +1,11 @@
+columnSuffix: null
+handle: serviceIcon
+instructions: 'Shown on service cards and in the services navigation.'
+name: Icon
+searchable: false
+settings:
+  fullGraphqlData: true
+  includeProIcons: false
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Icon

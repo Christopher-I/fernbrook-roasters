@@ -1,0 +1,60 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  6bfa85e0-781d-4ac0-9b84-5eeea1393dd9:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 117aa5fc-8ed9-4ed4-9c5d-c3c43c7cabe8 # Heading
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 2f4e78eb-35ec-4cfe-8bef-ca3ac947effd
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: c36b9a74-1d4a-4f17-a6e2-51df52d5a207 # Introduction
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9a66fd86-9cc2-465a-8712-f0bf8ea43f46
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: ab944186-283c-4ada-b3bd-a1299046ace0
+        userCondition: null
+    thumbFieldKey: null
+handle: blockForm
+hasTitleField: false
+icon: envelope
+name: 'Contact form'
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: 'Contact form'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

@@ -1,0 +1,13 @@
+columnSuffix: null
+handle: announcementEnabled
+instructions: 'Turn this on to show a strip across the top of every page.'
+name: 'Show the announcement bar'
+searchable: false
+settings:
+  default: false
+  offLabel: null
+  onLabel: null
+  showLabelsInCards: false
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

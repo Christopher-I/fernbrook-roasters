@@ -1,0 +1,60 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  11b1044f-2e5b-4834-b576-d9888c7c9b8d:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: d355b3d8-e2d6-4476-8338-414f3f1686cb # Quote
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 900a2206-836c-4ebe-b39d-930ec6e37c2f
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: a13ece0b-6047-4140-bf43-da36d851505d # Attribution
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bd423144-d94f-412d-85e0-7a7408e534d8
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: d2a641bf-1282-465b-bc98-09a8fe4927ff
+        userCondition: null
+    thumbFieldKey: null
+handle: blockPullQuote
+hasTitleField: false
+icon: quote-left
+name: 'Pull quote'
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: 'Pull quote'
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

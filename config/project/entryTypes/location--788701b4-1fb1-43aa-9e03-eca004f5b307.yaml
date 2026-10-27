@@ -1,0 +1,242 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  e5f0818c-8803-4175-8753-da1bf9fa6d8f:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 392e5de3-d3b4-46ee-b949-a062fa83cc04 # Summary
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: d0e59bb3-89fd-402e-9b5a-76ecdaa113f4
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: cf16795a-4551-40c2-b3c8-8759b15068fd # Hero image
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ff3dee2b-1570-4ac4-9a6a-b4823610d3ff
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 43aa79f2-52bf-4072-b6c2-ec96eaf0da74 # Body
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: c962dfeb-1130-4c86-b52a-9d4eec9ae61f
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 549aaf48-1087-49e5-a2c3-3e49b7635635
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 46137131-0ac2-4df1-a776-7c877ad41a9e # Address line 1
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 0e8cdd79-fbca-46fe-b450-aad535907fcf
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 567096e5-9172-41ca-b668-a6cb276d6b58 # Address line 2
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e2905ca2-f99c-4d99-9669-57dab83bcb72
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: c0723604-33a8-481f-a7ed-ea06e50fa542 # Town or city
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: a7ad52bc-4c5e-4df6-8566-3a4bcd776bbd
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 45337115-e69e-4903-a798-cb317faa9a43 # Postcode
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 9f6e0c96-546a-4e93-becc-824a151fae20
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 18998343-4126-4f58-a385-85cc714f8c7d # Map link
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cc1b3df1-23a0-4041-a886-21ef940c0869
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 52b6df0d-894a-4e7c-bb61-e4726189c214 # Opening hours
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: af8d5b80-fdc1-47a6-bd13-b33277f86f61
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 7c838f27-1be1-4fdd-ab62-3bd34b331e0c # Services offered here
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: bc4fb6a3-2878-41d8-a9f6-3678841ee6d1
+            userCondition: null
+            warning: null
+            width: 100
+        name: Visiting
+        uid: f3c15741-7976-4e08-9f90-33782966d2b7
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: fa242179-da2e-4f2e-bc11-b3c12816bcdb # Search engine title
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 82bb16bf-f2d4-4e29-9c69-c7f11122122b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: e6ec123d-7841-45af-9d4a-9e2fe37cc2b0 # Search engine description
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 08bb8f12-96f7-44a3-aec2-953b2d89c12c
+            userCondition: null
+            warning: null
+            width: 100
+        name: SEO
+        uid: ce9bcf06-5261-46c9-b8d7-bab65daabc64
+        userCondition: null
+    thumbFieldKey: null
+handle: location
+hasTitleField: false
+icon: location-dot
+name: Location
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

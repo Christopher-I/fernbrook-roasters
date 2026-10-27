@@ -1,0 +1,22 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 788701b4-1fb1-43aa-9e03-eca004f5b307 # Location
+handle: locations
+maxAuthors: 1
+minAuthors: 1
+name: Locations
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: true
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  29e33b09-a6d6-4da7-a872-085e60ee8fc7: # Fernbrook Roasters
+    enabledByDefault: true
+    hasUrls: true
+    template: _locations/entry
+    uriFormat: 'visit/{slug}'
+type: channel

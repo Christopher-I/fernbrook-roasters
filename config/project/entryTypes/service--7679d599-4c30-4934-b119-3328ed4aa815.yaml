@@ -1,0 +1,174 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  8294430c-7319-4621-a33d-af55f2524bd7:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 392e5de3-d3b4-46ee-b949-a062fa83cc04 # Summary
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 7b66d529-ef6b-4e8d-ad4b-b609bac06d61
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: a4016e88-dcb4-4dfa-a3a4-c2b8445dfa21 # Icon
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 3a98a9ca-3b9a-4888-adda-9be5d68a71bf
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: cf16795a-4551-40c2-b3c8-8759b15068fd # Hero image
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ddcaf473-7547-41a7-8b14-b4bea764ed46
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 43aa79f2-52bf-4072-b6c2-ec96eaf0da74 # Body
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: ba65e141-e127-417f-9c8d-75f9408d0783
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: c20b61bb-425d-4d64-850c-4894d34e870e
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: fc488b52-2891-495c-bf29-40e8f87de640 # Price from
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 70243e10-096d-4195-ae65-3e9e4437e347
+            userCondition: null
+            warning: null
+            width: 50
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: f8875ed4-5947-4af9-848b-6c028b0f4153 # Related journal entries
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: cbb6832c-eb26-4d34-b5c2-c2c052b6f318
+            userCondition: null
+            warning: null
+            width: 100
+        name: Commercial
+        uid: c8aa2508-50eb-4b55-81d0-19979e85fe4a
+        userCondition: null
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: fa242179-da2e-4f2e-bc11-b3c12816bcdb # Search engine title
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 82bb16bf-f2d4-4e29-9c69-c7f11122122b
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: e6ec123d-7841-45af-9d4a-9e2fe37cc2b0 # Search engine description
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 08bb8f12-96f7-44a3-aec2-953b2d89c12c
+            userCondition: null
+            warning: null
+            width: 100
+        name: SEO
+        uid: 558dcd65-6d92-4b6d-8f92-c0fb13be9dda
+        userCondition: null
+    thumbFieldKey: null
+handle: service
+hasTitleField: false
+icon: mug-hot
+name: Service
+showSlugField: true
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: null
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

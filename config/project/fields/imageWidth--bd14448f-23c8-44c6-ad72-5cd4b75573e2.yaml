@@ -1,0 +1,38 @@
+columnSuffix: null
+handle: imageWidth
+instructions: null
+name: Width
+searchable: false
+settings:
+  customOptions: false
+  options:
+    -
+      __assoc__:
+        -
+          - label
+          - Inset
+        -
+          - value
+          - inset
+        -
+          - default
+          - true
+    -
+      __assoc__:
+        -
+          - label
+          - 'Full width'
+        -
+          - value
+          - full
+    -
+      __assoc__:
+        -
+          - label
+          - 'Break out'
+        -
+          - value
+          - wide
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Dropdown

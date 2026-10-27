@@ -1,0 +1,25 @@
+columnSuffix: null
+handle: relatedJournal
+instructions: 'Pulled onto the service page as further reading.'
+name: 'Related journal entries'
+searchable: false
+settings:
+  allowSelfRelations: false
+  branchLimit: null
+  defaultPlacement: end
+  maintainHierarchy: false
+  maxRelations: 4
+  minRelations: null
+  selectionLabel: 'Add an article'
+  showSearchInput: true
+  showSiteMenu: false
+  showUnpermittedEntries: false
+  showUnpermittedSections: false
+  sources:
+    - 'section:eb4122c2-df19-4928-8857-af46c98d6c62' # Journal
+  targetSiteId: null
+  validateRelatedElements: false
+  viewMode: list
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Entries

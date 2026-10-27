@@ -1,0 +1,15 @@
+columnSuffix: null
+handle: priceFrom
+instructions: 'Leave empty for services that are quoted individually.'
+name: 'Price from'
+searchable: false
+settings:
+  currency: GBP
+  defaultValue: null
+  max: null
+  min: 0
+  showCurrency: true
+  size: null
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Money

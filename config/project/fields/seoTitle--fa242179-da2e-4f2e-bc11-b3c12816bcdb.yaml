@@ -1,0 +1,16 @@
+columnSuffix: null
+handle: seoTitle
+instructions: 'Overrides the page title in search results. Leave empty to use the entry title.'
+name: 'Search engine title'
+searchable: false
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  initialRows: 4
+  multiline: false
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText

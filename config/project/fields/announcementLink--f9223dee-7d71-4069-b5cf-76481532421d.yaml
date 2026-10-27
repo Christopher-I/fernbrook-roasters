@@ -1,0 +1,17 @@
+columnSuffix: null
+handle: announcementLink
+instructions: null
+name: 'Announcement links to'
+searchable: false
+settings:
+  fullGraphqlData: true
+  maxLength: 255
+  showLabelField: false
+  types:
+    - entry
+    - url
+    - email
+    - tel
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Link

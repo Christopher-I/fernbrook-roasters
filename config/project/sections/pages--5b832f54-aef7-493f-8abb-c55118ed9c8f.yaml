@@ -1,0 +1,25 @@
+defaultPlacement: end
+enableVersioning: true
+entryTypes:
+  -
+    uid: 6779747c-f6f0-4b76-95e3-af5ffc2f0163 # Page
+handle: pages
+maxAuthors: 1
+minAuthors: 1
+name: Pages
+previewTargets:
+  -
+    label: 'Primary entry page'
+    refresh: true
+    urlFormat: '{url}'
+propagationMethod: all
+siteSettings:
+  29e33b09-a6d6-4da7-a872-085e60ee8fc7: # Fernbrook Roasters
+    enabledByDefault: true
+    hasUrls: true
+    template: _pages/entry
+    uriFormat: "{% if slug == 'home' %}__home__{% elseif level == 1 %}{slug}{% else %}{parent.uri}/{slug}{% endif %}"
+structure:
+  maxLevels: 3
+  uid: 6bdb7bf7-77f3-4ed0-9460-7d6f78be8cd9
+type: structure

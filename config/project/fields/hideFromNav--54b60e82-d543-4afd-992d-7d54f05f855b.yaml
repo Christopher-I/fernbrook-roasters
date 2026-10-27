@@ -1,0 +1,13 @@
+columnSuffix: null
+handle: hideFromNav
+instructions: 'The page stays published and reachable by its URL.'
+name: 'Hide from the main navigation'
+searchable: false
+settings:
+  default: false
+  offLabel: null
+  onLabel: null
+  showLabelsInCards: false
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Lightswitch

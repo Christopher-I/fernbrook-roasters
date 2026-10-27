@@ -1,0 +1,67 @@
+defaultPlacement: end
+fieldLayouts:
+  bac33aca-cd2e-4a6f-a520-9636e7211151:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            autocapitalize: true
+            autocomplete: false
+            autocorrect: true
+            class: null
+            dateAdded: null
+            disabled: false
+            elementCondition: null
+            id: null
+            inputType: null
+            instructions: null
+            label: null
+            max: null
+            min: null
+            name: null
+            orientation: null
+            placeholder: null
+            readonly: false
+            requirable: false
+            size: null
+            step: null
+            tip: null
+            title: null
+            type: craft\fieldlayoutelements\TitleField
+            uid: 06b0e0f1-cfd7-4bfd-a46c-673cc3eca077
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 392e5de3-d3b4-46ee-b949-a062fa83cc04 # Summary
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: e5e5c869-53f4-4dc7-8877-26425fcb22ff
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: ff79d550-795a-4361-a36f-c6bf79d220ca
+        userCondition: null
+    thumbFieldKey: null
+handle: journalTopics
+name: 'Journal Topics'
+siteSettings:
+  29e33b09-a6d6-4da7-a872-085e60ee8fc7: # Fernbrook Roasters
+    hasUrls: true
+    template: _journal/topic
+    uriFormat: 'journal/topic/{slug}'
+structure:
+  maxLevels: 1
+  uid: 44aa8b13-0dd0-4295-876b-50243d90dc7a

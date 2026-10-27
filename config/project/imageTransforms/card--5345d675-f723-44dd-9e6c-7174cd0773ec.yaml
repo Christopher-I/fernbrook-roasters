@@ -1,0 +1,11 @@
+fill: null
+format: webp
+handle: card
+height: 600
+interlace: line
+mode: crop
+name: Card
+position: center-center
+quality: 82
+upscale: false
+width: 800

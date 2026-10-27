@@ -1,0 +1,70 @@
+columnSuffix: null
+handle: openingHours
+instructions: null
+name: 'Opening hours'
+searchable: false
+settings:
+  addRowLabel: 'Add a day'
+  columns:
+    __assoc__:
+      -
+        - col1
+        -
+          __assoc__:
+            -
+              - heading
+              - Day
+            -
+              - handle
+              - day
+            -
+              - type
+              - singleline
+            -
+              - width
+              - 30%
+      -
+        - col2
+        -
+          __assoc__:
+            -
+              - heading
+              - Opens
+            -
+              - handle
+              - opens
+            -
+              - type
+              - singleline
+      -
+        - col3
+        -
+          __assoc__:
+            -
+              - heading
+              - Closes
+            -
+              - handle
+              - closes
+            -
+              - type
+              - singleline
+      -
+        - col4
+        -
+          __assoc__:
+            -
+              - heading
+              - 'Closed all day'
+            -
+              - handle
+              - closed
+            -
+              - type
+              - lightswitch
+  maxRows: 7
+  minRows: 1
+  staticRows: false
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\Table

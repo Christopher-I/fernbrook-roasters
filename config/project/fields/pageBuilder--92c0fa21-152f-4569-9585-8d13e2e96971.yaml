@@ -1,0 +1,51 @@
+columnSuffix: null
+handle: pageBuilder
+instructions: 'Build the page from blocks. Drag to reorder.'
+name: 'Page content'
+searchable: true
+settings:
+  createButtonLabel: null
+  defaultIndexViewMode: cards
+  enableVersioning: false
+  entryTypes:
+    -
+      __assoc__:
+        -
+          - uid
+          - 5462744d-9570-459b-b2a0-4d6d256e1d1b # Text
+    -
+      __assoc__:
+        -
+          - uid
+          - 91a0f09f-01cb-4686-8cba-8a591ddec37e # Image
+    -
+      __assoc__:
+        -
+          - uid
+          - a08d1c2e-092c-4461-a7ba-de95af009c89 # Two columns
+    -
+      __assoc__:
+        -
+          - uid
+          - 03099f54-a012-404e-993d-0c95f28789d7 # Call to action
+    -
+      __assoc__:
+        -
+          - uid
+          - 8ad885a5-82e5-4d07-9f56-633ea952965d # Pull quote
+    -
+      __assoc__:
+        -
+          - uid
+          - b983e1f7-3ce0-4b3b-9de9-47fed04aa61f # Contact form
+  includeTableView: false
+  maxEntries: null
+  minEntries: null
+  pageSize: null
+  propagationKeyFormat: null
+  propagationMethod: all
+  showCardsInGrid: false
+  viewMode: blocks
+translationKeyFormat: null
+translationMethod: site
+type: craft\fields\Matrix

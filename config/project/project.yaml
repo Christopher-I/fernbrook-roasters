@@ -1,12 +1,93 @@
-dateModified: 1793127098
+dateModified: 1793127567
 email:
   fromEmail: hello@fernbrookroasters.test
   fromName: 'Fernbrook Roasters'
   transportType: craft\mail\transportadapters\Sendmail
+fs:
+  documents:
+    hasUrls: true
+    name: Documents
+    settings:
+      path: '@webroot/uploads/documents'
+    type: craft\fs\Local
+    url: '@web/uploads/documents'
+  images:
+    hasUrls: true
+    name: Images
+    settings:
+      path: '@webroot/uploads/images'
+    type: craft\fs\Local
+    url: '@web/uploads/images'
 meta:
   __names__:
+    1d9d3a7d-ebd1-4dfd-b559-d9874f673eeb: 'Left column' # Left column
+    4e3cf8dc-d089-420c-81a4-01802feb4264: Images # Images
+    4e8dbd87-6979-4dbf-9370-50285628029f: 'Button links to' # Button links to
+    5b832f54-aef7-493f-8abb-c55118ed9c8f: Pages # Pages
+    7a5cf30b-bbdd-4a60-af94-f508855630b1: Locations # Locations
+    7add453f-a390-432f-a044-56fb392ee944: 'Button label' # Button label
+    7c838f27-1be1-4fdd-ab62-3bd34b331e0c: 'Services offered here' # Services offered here
+    7cba587e-9dbd-4def-92bc-5daa89dd2b04: Phone # Phone
+    7f21f3a3-e698-4b5d-9bfb-c9498cbb02c9: 'Site Settings' # Site Settings
+    7f79c31c-3e5c-4d9b-bc7a-ca47d6416390: Services # Services
+    8ad885a5-82e5-4d07-9f56-633ea952965d: 'Pull quote' # Pull quote
+    9b9d3618-e2c5-46a2-9be7-f1874ca6b317: Article # Article
+    9c91bc2d-6860-4bc6-a842-a0b72b7d136e: Announcement # Announcement
     10abaaf8-99ef-4a40-b86a-a32e8776bf9d: 'Fernbrook Roasters' # Fernbrook Roasters
+    18af57ec-da4d-4a3f-9ae6-e255e94201e3: 'Postal address' # Postal address
+    20aa30f9-8491-47a0-b8f7-25f8f9060040: 'Show the announcement bar' # Show the announcement bar
     29e33b09-a6d6-4da7-a872-085e60ee8fc7: 'Fernbrook Roasters' # Fernbrook Roasters
+    43aa79f2-52bf-4072-b6c2-ec96eaf0da74: Body # Body
+    52b6df0d-894a-4e7c-bb61-e4726189c214: 'Opening hours' # Opening hours
+    54b60e82-d543-4afd-992d-7d54f05f855b: 'Hide from the main navigation' # Hide from the main navigation
+    56e456bb-c38a-44bd-b029-bda532448158: Standfirst # Standfirst
+    91a0f09f-01cb-4686-8cba-8a591ddec37e: Image # Image
+    92c0fa21-152f-4569-9585-8d13e2e96971: 'Page content' # Page content
+    117aa5fc-8ed9-4ed4-9c5d-c3c43c7cabe8: Heading # Heading
+    228f6747-22a6-4472-aedf-87739dc2cbe0: Text # Text
+    392e5de3-d3b4-46ee-b949-a062fa83cc04: Summary # Summary
+    694c7fcc-886f-49b7-8508-45eeac12636f: 'Show a button' # Show a button
+    03099f54-a012-404e-993d-0c95f28789d7: 'Call to action' # Call to action
+    5345d675-f723-44dd-9e6c-7174cd0773ec: Card # Card
+    6266febf-d0e5-4c34-b799-73ab4bc525e6: Image # Image
+    7147d965-bce9-41a7-aae4-81a0b790ce32: Credit # Credit
+    7679d599-4c30-4934-b119-3328ed4aa815: Service # Service
+    9510c8b1-112f-4906-b80a-b0d31bbf3825: Caption # Caption
+    43141c76-9dbb-4602-aa67-cd967e8ee2e9: Author # Author
+    567096e5-9172-41ca-b668-a6cb276d6b58: 'Address line 2' # Address line 2
+    788701b4-1fb1-43aa-9e03-eca004f5b307: Location # Location
+    880551e6-08ba-43db-a07a-3edb9d2f3bd0: Documents # Documents
+    5462744d-9570-459b-b2a0-4d6d256e1d1b: Text # Text
+    6779747c-f6f0-4b76-95e3-af5ffc2f0163: Page # Page
+    18998343-4126-4f58-a385-85cc714f8c7d: 'Map link' # Map link
+    45337115-e69e-4903-a798-cb317faa9a43: Postcode # Postcode
+    46137131-0ac2-4df1-a776-7c877ad41a9e: 'Address line 1' # Address line 1
+    a08d1c2e-092c-4461-a7ba-de95af009c89: 'Two columns' # Two columns
+    a13ece0b-6047-4140-bf43-da36d851505d: Attribution # Attribution
+    a4016e88-dcb4-4dfa-a3a4-c2b8445dfa21: Icon # Icon
+    a4388ef9-101c-4626-87d6-1e31e17f529f: Bio # Bio
+    ad94e2f3-2cc3-437c-858a-9ecf159cf60c: Hero # Hero
+    b983e1f7-3ce0-4b3b-9de9-47fed04aa61f: 'Contact form' # Contact form
+    bd14448f-23c8-44c6-ad72-5cd4b75573e2: Width # Width
+    c0723604-33a8-481f-a7ed-ea06e50fa542: 'Town or city' # Town or city
+    c36b9a74-1d4a-4f17-a6e2-51df52d5a207: Introduction # Introduction
+    cb7b6010-a03c-4e97-87dd-bf679af6b1f6: Caption # Caption
+    cf16795a-4551-40c2-b3c8-8759b15068fd: 'Hero image' # Hero image
+    cfb7bd07-db40-487a-9760-f677ee124829: 'Right column' # Right column
+    d44a4430-3b8c-44a7-9f7c-d2631e6a46f4: Email # Email
+    d355b3d8-e2d6-4476-8338-414f3f1686cb: Quote # Quote
+    d5588aea-d7a8-43ae-83a2-92e482ff383f: Topics # Topics
+    e6ec123d-7841-45af-9d4a-9e2fe37cc2b0: 'Search engine description' # Search engine description
+    eb4122c2-df19-4928-8857-af46c98d6c62: Journal # Journal
+    f0d1e77f-21c6-4dcb-bb73-39ab9ca531e3: 'Social links' # Social links
+    f32e260a-c4c8-4b69-add8-91bdf7ea08e4: Role # Role
+    f8875ed4-5947-4af9-848b-6c028b0f4153: 'Related journal entries' # Related journal entries
+    f9223dee-7d71-4069-b5cf-76481532421d: 'Announcement links to' # Announcement links to
+    f46151f3-e840-46b6-b351-2a4d38e3a579: Thumbnail # Thumbnail
+    fa242179-da2e-4f2e-bc11-b3c12816bcdb: 'Search engine title' # Search engine title
+    faab857e-4884-4176-b6c3-dad1f17ed25b: Heading # Heading
+    fb081a97-ce2c-4007-bcc1-31cf9c2fbd52: 'Journal Topics' # Journal Topics
+    fc488b52-2891-495c-bf29-40e8f87de640: 'Price from' # Price from
 plugins:
   ckeditor:
     edition: standard
@@ -26,10 +107,3 @@ system:
   name: 'Fernbrook Roasters'
   schemaVersion: 5.11.0.2
   timeZone: America/Los_Angeles
-users:
-  allowPublicRegistration: false
-  defaultGroup: null
-  photoSubpath: null
-  photoVolumeUid: null
-  require2fa: false
-  requireEmailVerification: true

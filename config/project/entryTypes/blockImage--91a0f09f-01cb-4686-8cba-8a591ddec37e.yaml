@@ -1,0 +1,77 @@
+allowLineBreaksInTitles: false
+color: null
+description: null
+fieldLayouts:
+  f1a5285f-fd51-4f8e-b0bb-1630659ad33c:
+    cardThumbAlignment: end
+    tabs:
+      -
+        elementCondition: null
+        elements:
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 6266febf-d0e5-4c34-b799-73ab4bc525e6 # Image
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: true
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 20d632f5-f372-4564-968a-19f28511f9af
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: 9510c8b1-112f-4906-b80a-b0d31bbf3825 # Caption
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: 17960ec5-929e-4e92-8507-aefe1eeebf2d
+            userCondition: null
+            warning: null
+            width: 100
+          -
+            dateAdded: null
+            editCondition: null
+            elementCondition: null
+            elementEditCondition: null
+            fieldUid: bd14448f-23c8-44c6-ad72-5cd4b75573e2 # Width
+            handle: null
+            instructions: null
+            label: null
+            oldFieldUid: null
+            required: false
+            tip: null
+            type: craft\fieldlayoutelements\CustomField
+            uid: b8cfdd48-04f3-4adb-8038-826eccce94a9
+            userCondition: null
+            warning: null
+            width: 100
+        name: Content
+        uid: 05975fab-7eeb-46eb-916b-ee63cb6fe3d1
+        userCondition: null
+    thumbFieldKey: null
+handle: blockImage
+hasTitleField: false
+icon: image
+name: Image
+showSlugField: false
+showStatusField: true
+slugTranslationKeyFormat: null
+slugTranslationMethod: site
+titleFormat: Image
+titleTranslationKeyFormat: null
+titleTranslationMethod: site
+uiLabelFormat: '{title}'

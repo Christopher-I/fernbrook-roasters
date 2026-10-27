@@ -1,0 +1,16 @@
+columnSuffix: null
+handle: standfirst
+instructions: 'The introductory paragraph, set larger than the body copy.'
+name: Standfirst
+searchable: true
+settings:
+  byteLimit: null
+  charLimit: null
+  code: false
+  initialRows: 3
+  multiline: true
+  placeholder: null
+  uiMode: normal
+translationKeyFormat: null
+translationMethod: none
+type: craft\fields\PlainText
