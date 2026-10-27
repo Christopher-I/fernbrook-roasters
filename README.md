@@ -8,6 +8,8 @@ telephone number (Ofcom's reserved 01632 960xxx drama range) and the people are 
 Nothing here is client work and nothing is presented as such.
 
 - Live site: https://web-production-924c1.up.railway.app
+- Lighthouse on the live home page, mobile preset: performance 98, accessibility 100,
+  best practices 100, SEO 100
 - Control panel: `/admin`
 - Maintenance guide for a non-technical owner: [MAINTENANCE.md](MAINTENANCE.md)
 
