@@ -12,6 +12,7 @@ COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
 WORKDIR /app
 
+# Dependencies first, so a source change does not re-download them.
 COPY composer.json composer.lock ./
 RUN composer install \
       --no-dev \
@@ -21,7 +22,19 @@ RUN composer install \
       --prefer-dist
 
 COPY . .
-RUN composer dump-autoload --optimize --classmap-authoritative --no-dev
+
+# Then a full install over the top. This is what runs craftcms/plugin-installer
+# and writes vendor/craftcms/plugins.php; without it Craft boots with no
+# plugins and refuses to apply a project config that expects them. The test
+# fails the build rather than letting that reach a server.
+RUN composer install \
+      --no-dev \
+      --no-interaction \
+      --prefer-dist \
+      --optimize-autoloader \
+      --classmap-authoritative \
+  && test -f vendor/craftcms/plugins.php \
+  && cat vendor/craftcms/plugins.php | head -40
 
 # ---------------------------------------------------------------------------
 # Stage 2 - Runtime: nginx + PHP-FPM under supervisord
