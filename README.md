@@ -76,6 +76,14 @@ Building the model in a console command rather than clicking it together means t
 thing can be rebuilt from an empty database, reviewed in a pull request, and re-run after a
 merge conflict in the project config.
 
+One thing worth knowing if you read that command: Craft 5 keys an entry's stored content by
+the UUID of the **field layout element**, not of the field. Rebuild a layout with freshly
+generated element UUIDs and every value already entered against the old ones is orphaned.
+The content stays in the database and the page renders blank. So the command derives each
+element's UUID from the owner and the field handle, and the same goes for tabs, condition
+rules and the native Title and user fields that Craft injects when a layout does not declare
+them. That is what makes the command safe to run against a site that already has content.
+
 ---
 
 ## Environment variables
@@ -170,7 +178,7 @@ For quoting and proposals, so none of this needs re-reading from the code.
 | Craft upgrades deploy safely | `config/project/` is committed and `php craft up` runs from the container entrypoint on every deploy. `CRAFT_ALLOW_ADMIN_CHANGES=false` in production stops the live site and the repo drifting apart |
 | Multi-environment configuration | One `config/general.php`, environment differences applied from `CRAFT_ENVIRONMENT`. Secrets in `.env`, never committed |
 | Content modelling beyond tutorials | Field layout tabs, conditional field layout elements, a two-level structure section, Matrix block types as entry types, Money and Icon fields, a table field |
-| Whole model reproducible from nothing | `fernbrook/schema/build` rebuilds the content model from an empty database; `fernbrook/seed/run` rebuilds the content |
+| Whole model reproducible from nothing | `fernbrook/schema/build` rebuilds the content model from an empty database; `fernbrook/seed/run` rebuilds the content. Running either again changes nothing: field layout elements, condition rules and native elements all get deterministic UUIDs, so a rebuild produces an empty project config diff and leaves existing content attached |
 | Image handling and performance | Named transforms (hero, card, thumb) served as WebP with `srcset` and `sizes`, lazy loading everywhere except the hero, which is eager with real dimensions to hold layout |
 | Query performance, measured not assumed | Eager loading kept where the debug toolbar shows it helps (`/journal` 109 → 95 queries) and removed from single-entry templates where Craft 5's automatic eager loading already covers it and a manual `.with()` costs queries. Numbers are in the template comments |
 | Template caching that invalidates correctly | `{% cache %}` on the listings and navigation. Craft clears these automatically when an element inside them changes; the duration is only a backstop |

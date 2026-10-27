@@ -53,7 +53,12 @@ RUN chmod +x /usr/local/bin/entrypoint
 
 COPY --from=vendor --chown=www-data:www-data /app /var/www/html
 
+# The base image leaves /var/www/html world-writable and sticky (1777).
+# With fs.protected_symlinks on, the kernel then refuses to let www-data
+# follow a root-owned symlink inside it, which is exactly what the storage
+# and uploads symlinks are. Tightening the mode is the fix.
 RUN chmod +x /var/www/html/craft \
+  && chmod 0755 /var/www/html \
   && mkdir -p /var/lib/nginx/tmp /var/log/supervisor \
   && chown -R www-data:www-data /var/www/html /var/lib/nginx
 

@@ -14,7 +14,7 @@ turns into a day or two of work, because the updates stop being small.
 |---|---|---|
 | Monthly | Updates applied and checked on a copy of the site first | Developer |
 | Monthly | Backup restore spot-check | Developer |
-| Nightly | Automatic database and file backup | Automatic |
+| Before any big change | Database backup taken from the admin area | Anyone |
 | Yearly | PHP version review | Developer |
 
 ---
@@ -66,15 +66,22 @@ Two things need backing up, and they are separate.
 - **The database.** All the written content, settings, users and structure.
 - **The uploaded files.** Images and documents added through the admin area.
 
-On this site the database is dumped nightly by the host and kept for a rolling window, and
-uploaded files sit on a storage volume that survives deploys and is snapshotted on the same
-schedule. A manual database backup can also be taken from Craft's admin area at any time,
-under Utilities, Database Backup, which is worth doing before any large content change.
+On this site, a backup of the database can be taken at any time from Craft's own admin area,
+under Utilities, Database Backup. It downloads a file. Do this before any large content
+change, and keep the file somewhere other than the server.
 
-**Restoring** means loading the database dump back in and copying the files back. The
-important part is that this gets tested, not just assumed. A backup nobody has ever
-restored is not a backup. Once a month the restore is run against the test copy, which both
-proves the backup works and gives a fresh, realistic site to test updates on.
+Uploaded files live on a storage volume that is separate from the code, so they survive every
+deploy. That is not the same as a backup: it protects against a deploy wiping them, not
+against someone deleting them. Scheduled off-server backups of both the database and the
+uploads are a hosting setting, and whether they are switched on depends on the plan the site
+is hosted under. It is worth confirming in writing which of the two is in place before
+assuming either.
+
+**Restoring** means loading the database dump back in and copying the uploaded files back.
+The important part is that this gets tested, not just assumed. A backup nobody has ever
+restored is not a backup. The monthly routine above is the natural place to test it: restore
+the latest backup onto the test copy, which both proves the backup works and gives a fresh,
+realistic site to try the updates on.
 
 ---
 

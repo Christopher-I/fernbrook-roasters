@@ -1,3 +1,7 @@
+# vendor/ must not come from the host: the image installs its own
+# production-only dependencies, and copying a dev vendor directory over the
+# top leaves Yii registering extensions whose classes are no longer there.
+vendor
 .ddev
 .git
 .github
@@ -9,10 +13,7 @@ storage/logs
 storage/backups
 web/cpresources
 web/uploads
-*.md
-!README.md
 .env
-.env.*
-!.env.example
+.env.local
 .DS_Store
 tests
