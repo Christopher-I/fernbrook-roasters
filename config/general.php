@@ -36,6 +36,10 @@ $config = GeneralConfig::create()
     ->aliases([
         '@webroot' => dirname(__DIR__) . '/web',
         '@web' => App::env('PRIMARY_SITE_URL'),
+        // Cache buster for the stylesheet. There is no build step, so the
+        // file's own modification time is the version: edit the CSS and the
+        // URL changes, leave it alone and browsers keep the cached copy.
+        '@assetVersion' => (string)(@filemtime(dirname(__DIR__) . '/web/css/site.css') ?: 0),
     ]);
 
 if ($isDev) {

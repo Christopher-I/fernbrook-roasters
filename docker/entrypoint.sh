@@ -118,7 +118,13 @@ if [ "${CRAFT_SKIP_BOOTSTRAP:-0}" != "1" ]; then
     fi
   fi
 
+  # A deploy almost always changes templates. Compiled templates have to go,
+  # and so do the data caches, because {% cache %} output is keyed by the
+  # elements inside it and not by the template that produced it: without
+  # this, a Twig change would not show up until an editor saved something.
   run_as_app "php ${APP_DIR}/craft clear-caches/compiled-templates" >/dev/null 2>&1 || true
+  run_as_app "php ${APP_DIR}/craft clear-caches/data" >/dev/null 2>&1 || true
+  run_as_app "php ${APP_DIR}/craft clear-caches/cp-resources" >/dev/null 2>&1 || true
 fi
 
 log "starting supervisord"

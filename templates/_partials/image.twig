@@ -6,15 +6,25 @@
 
 {% macro picture(asset, transform, sizes, loading, className) %}
   {%- if asset -%}
+    {# Width descriptors rather than 1x/2x, so a phone can pick a 600px hero
+       instead of always downloading the full 1600px one. #}
+    {% set widths = {
+      hero: ['600w', '900w', '1200w', '1600w'],
+      card: ['400w', '600w', '800w'],
+      thumb: ['200w', '400w'],
+    } %}
     <img
       src="{{ asset.getUrl(transform) }}"
-      srcset="{{ asset.getSrcset(['1x', '1.5x', '2x'], transform) }}"
+      srcset="{{ asset.getSrcset(widths[transform] ?? ['1x', '2x'], transform) }}"
       sizes="{{ sizes ?? '100vw' }}"
       width="{{ asset.getWidth(transform) }}"
       height="{{ asset.getHeight(transform) }}"
       alt="{{ asset.alt ?? asset.title }}"
       loading="{{ loading ?? 'lazy' }}"
-      decoding="async"
+      {# The eager image is the largest contentful paint; telling the browser
+         so moves it to the front of the queue. #}
+      fetchpriority="{{ loading == 'eager' ? 'high' : 'auto' }}"
+      decoding="{{ loading == 'eager' ? 'sync' : 'async' }}"
       {% if className %}class="{{ className }}"{% endif %}>
   {%- endif -%}
 {% endmacro %}

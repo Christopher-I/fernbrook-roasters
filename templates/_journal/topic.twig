@@ -29,7 +29,7 @@
             {{ img.picture(image, 'card', '(min-width: 60rem) 22rem, (min-width: 38rem) 45vw, 100vw') }}
           </a>
         {% endif %}
-        <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+        <h2><a href="{{ article.url }}">{{ article.title }}</a></h2>
         <p class="card__meta">{{ article.postDate|date('j F Y') }}</p>
       </li>
     {% else %}

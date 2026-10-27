@@ -16,7 +16,7 @@
   {% endif %}
 
   <link rel="canonical" href="{{ craft.app.request.absoluteUrl|split('?')|first }}">
-  <link rel="stylesheet" href="{{ alias('@web/css/site.css') }}?v={{ craft.app.config.general.cacheDuration }}">
+  <link rel="stylesheet" href="{{ alias('@web/css/site.css') }}?v={{ alias('@assetVersion') }}">
   <link rel="icon" href="{{ alias('@web/favicon.svg') }}" type="image/svg+xml">
 
   <meta property="og:site_name" content="Fernbrook Roasters">
@@ -25,6 +25,8 @@
   {% if entry is defined and entry.heroImage is defined and entry.heroImage.one() %}
     <meta property="og:image" content="{{ entry.heroImage.one().getUrl('hero') }}">
   {% endif %}
+
+  {% block head %}{% endblock %}
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>

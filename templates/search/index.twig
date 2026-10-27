@@ -2,6 +2,11 @@
 
 {% set q = craft.app.request.getParam('q')|trim %}
 {% set title = q ? 'Search: ' ~ q : 'Search' %}
+{% set description = 'Search the Fernbrook Roasters journal, services and locations.' %}
+
+{% block head %}
+  <meta name="robots" content="noindex, follow">
+{% endblock %}
 
 {% block content %}
   <div class="hero">
@@ -32,7 +37,7 @@
         {% for result in results %}
           <li class="card">
             <p class="eyebrow">{{ result.section.name }}</p>
-            <h3><a href="{{ result.url }}">{{ result.title }}</a></h3>
+            <h2><a href="{{ result.url }}">{{ result.title }}</a></h2>
             {% if result.summary is defined and result.summary %}
               <p>{{ result.summary }}</p>
             {% elseif result.standfirst is defined and result.standfirst %}

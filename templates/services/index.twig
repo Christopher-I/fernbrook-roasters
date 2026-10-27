@@ -29,7 +29,7 @@
               {{ img.picture(image, 'card', '(min-width: 60rem) 22rem, (min-width: 38rem) 45vw, 100vw') }}
             </a>
           {% endif %}
-          <h3><a href="{{ service.url }}">{{ service.title }}</a></h3>
+          <h2><a href="{{ service.url }}">{{ service.title }}</a></h2>
           <p>{{ service.summary }}</p>
           {% if service.priceFrom %}
             <p class="card__meta">From {{ service.priceFrom|money }}</p>
