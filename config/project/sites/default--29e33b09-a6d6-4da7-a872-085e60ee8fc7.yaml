@@ -1,0 +1,8 @@
+baseUrl: $PRIMARY_SITE_URL
+handle: default
+hasUrls: true
+language: en-GB
+name: 'Fernbrook Roasters'
+primary: true
+siteGroup: 10abaaf8-99ef-4a40-b86a-a32e8776bf9d # Fernbrook Roasters
+sortOrder: 1

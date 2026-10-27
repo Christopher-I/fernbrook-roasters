@@ -9,12 +9,15 @@ additional_fqdns: []
 database:
     type: mysql
     version: "8.0"
+upload_dirs:
+    - web/uploads
 use_dns_when_possible: true
 timezone: Europe/London
 composer_version: "2"
 web_environment: []
 nodejs_version: "24"
 corepack_enable: false
+disable_upload_dirs_warning: true
 
 # Key features of DDEV's config.yaml:
 
