@@ -9,9 +9,13 @@ minAuthors: 1
 name: Locations
 previewTargets:
   -
-    label: 'Primary entry page'
+    label: 'Location page'
     refresh: true
     urlFormat: '{url}'
+  -
+    label: 'Visit index'
+    refresh: true
+    urlFormat: 'visit'
 propagationMethod: all
 siteSettings:
   29e33b09-a6d6-4da7-a872-085e60ee8fc7: # Fernbrook Roasters

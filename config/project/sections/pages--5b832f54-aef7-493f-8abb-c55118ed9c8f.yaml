@@ -9,7 +9,7 @@ minAuthors: 1
 name: Pages
 previewTargets:
   -
-    label: 'Primary entry page'
+    label: 'Page'
     refresh: true
     urlFormat: '{url}'
 propagationMethod: all

@@ -9,9 +9,13 @@ minAuthors: 1
 name: Services
 previewTargets:
   -
-    label: 'Primary entry page'
+    label: 'Service page'
     refresh: true
     urlFormat: '{url}'
+  -
+    label: 'Services index'
+    refresh: true
+    urlFormat: 'services'
 propagationMethod: all
 siteSettings:
   29e33b09-a6d6-4da7-a872-085e60ee8fc7: # Fernbrook Roasters

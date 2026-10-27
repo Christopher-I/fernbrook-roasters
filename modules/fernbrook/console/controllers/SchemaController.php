@@ -554,6 +554,7 @@ class SchemaController extends Controller
             // rest of them.
             'uriFormat' => "{% if slug == 'home' %}__home__{% elseif level == 1 %}{slug}{% else %}{parent.uri}/{slug}{% endif %}",
             'template' => '_pages/entry',
+            'previewTargets' => [['label' => 'Page', 'urlFormat' => '{url}']],
         ]);
 
         // Journal -----------------------------------------------------
@@ -576,6 +577,7 @@ class SchemaController extends Controller
         $this->section('journal', 'Journal', Section::TYPE_CHANNEL, [$journalType], [
             'uriFormat' => 'journal/{slug}',
             'template' => '_journal/entry',
+            'previewTargets' => [['label' => 'Article', 'urlFormat' => '{url}'], ['label' => 'Journal index', 'urlFormat' => 'journal']],
         ]);
 
         // Services ----------------------------------------------------
@@ -600,6 +602,7 @@ class SchemaController extends Controller
             'maxLevels' => 2,
             'uriFormat' => "{% if level == 1 %}services/{slug}{% else %}{parent.uri}/{slug}{% endif %}",
             'template' => '_services/entry',
+            'previewTargets' => [['label' => 'Service page', 'urlFormat' => '{url}'], ['label' => 'Services index', 'urlFormat' => 'services']],
         ]);
 
         // Locations ---------------------------------------------------
@@ -627,6 +630,7 @@ class SchemaController extends Controller
         $this->section('locations', 'Locations', Section::TYPE_CHANNEL, [$locationType], [
             'uriFormat' => 'visit/{slug}',
             'template' => '_locations/entry',
+            'previewTargets' => [['label' => 'Location page', 'urlFormat' => '{url}'], ['label' => 'Visit index', 'urlFormat' => 'visit']],
         ]);
 
         // relatedJournal and servicesOffered are created before the sections
@@ -909,9 +913,13 @@ class SchemaController extends Controller
         $section->type = $type;
         $section->maxLevels = $config['maxLevels'] ?? null;
         $section->enableVersioning = true;
-        $section->previewTargets = [
-            ['label' => 'Primary entry page', 'urlFormat' => '{url}', 'refresh' => true],
-        ];
+        // Live Preview targets. The first is the entry's own page; the second,
+        // where there is one, is the listing it appears on, so an editor can
+        // check the card as well as the page without leaving the editor.
+        $section->previewTargets = array_map(
+            fn(array $target) => $target + ['refresh' => true],
+            $config['previewTargets'],
+        );
 
         $siteSettings = [];
         foreach (Craft::$app->getSites()->getAllSites() as $site) {
