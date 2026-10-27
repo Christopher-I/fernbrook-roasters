@@ -199,6 +199,15 @@ and licence are in `seed/images/credits.json`, stored on the asset in Craft when
 and rendered on the page under the image it belongs to. Alt text is written per image in
 `seed/images/alt.json`.
 
+## Two things to watch
+
+**Railway is retiring `railway.toml`.** The platform is moving to an authoring file at
+`.railway/railway.ts`, and the warning says the old files keep working until 1 December 2026.
+`railway config migrate --variables=unmanaged --apply` generates the replacement, followed by
+`railway config migrate cutover` to switch the service over. It is left on the old format
+here deliberately, because `railway.toml` is four readable lines and the generated TypeScript
+drops the restart policy, but it is a dated piece of config and should move before then.
+
 ## A note on the Redirects plugin
 
 `venveo/craft-redirect` is currently on a 5.x beta. It is the practical option for Craft 5 and

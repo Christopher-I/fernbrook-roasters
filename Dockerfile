@@ -12,29 +12,24 @@ COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
 WORKDIR /app
 
-# Dependencies first, so a source change does not re-download them.
+# Composer runs as root inside the builder, and it disables plugins when it
+# detects that. craftcms/plugin-installer is one of those plugins, and it is
+# what writes vendor/craftcms/plugins.php. Without that file Craft boots with
+# no plugins and refuses to apply a project config that expects them.
+ENV COMPOSER_ALLOW_SUPERUSER=1
+
+# Dependencies first, so a source change does not re-download them. This step
+# is also where the plugin installer runs, so it must not use --no-scripts.
 COPY composer.json composer.lock ./
-RUN composer install \
-      --no-dev \
-      --no-scripts \
-      --no-autoloader \
-      --no-interaction \
-      --prefer-dist
-
-COPY . .
-
-# Then a full install over the top. This is what runs craftcms/plugin-installer
-# and writes vendor/craftcms/plugins.php; without it Craft boots with no
-# plugins and refuses to apply a project config that expects them. The test
-# fails the build rather than letting that reach a server.
 RUN composer install \
       --no-dev \
       --no-interaction \
       --prefer-dist \
-      --optimize-autoloader \
-      --classmap-authoritative \
-  && test -f vendor/craftcms/plugins.php \
-  && cat vendor/craftcms/plugins.php | head -40
+      --no-autoloader \
+  && test -f vendor/craftcms/plugins.php
+
+COPY . .
+RUN composer dump-autoload --no-dev --optimize --classmap-authoritative
 
 # ---------------------------------------------------------------------------
 # Stage 2 - Runtime: nginx + PHP-FPM under supervisord
