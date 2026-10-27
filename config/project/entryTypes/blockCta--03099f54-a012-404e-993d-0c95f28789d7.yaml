@@ -68,7 +68,7 @@ fieldLayouts:
                 -
                   class: craft\fields\conditions\LightswitchFieldConditionRule
                   fieldUid: 694c7fcc-886f-49b7-8508-45eeac12636f # Show a button
-                  uid: 674462c3-f3f8-4831-a710-61e94a7254fa
+                  uid: 6084a9e6-7d1f-5634-87f4-5485ec6c360d
                   value: true
               elementType: craft\elements\Entry
               fieldContext: global
@@ -94,7 +94,7 @@ fieldLayouts:
                 -
                   class: craft\fields\conditions\LightswitchFieldConditionRule
                   fieldUid: 694c7fcc-886f-49b7-8508-45eeac12636f # Show a button
-                  uid: ba91fbee-e04e-4927-b6b4-96b398d76668
+                  uid: 6084a9e6-7d1f-5634-87f4-5485ec6c360d
                   value: true
               elementType: craft\elements\Entry
               fieldContext: global

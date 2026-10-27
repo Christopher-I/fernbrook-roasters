@@ -31,7 +31,7 @@ fieldLayouts:
             tip: null
             title: null
             type: craft\fieldlayoutelements\assets\AssetTitleField
-            uid: aff5f73e-883e-4dad-a674-7fef4aa4deba
+            uid: 03533cc8-f19c-59ea-819c-27d3ed40f881
             userCondition: null
             warning: null
             width: 100

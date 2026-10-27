@@ -13,7 +13,13 @@ use craft\elements\Entry;
 use craft\elements\GlobalSet;
 use craft\elements\User;
 use craft\fieldlayoutelements\CustomField;
+use craft\fieldlayoutelements\assets\AssetTitleField;
+use craft\fieldlayoutelements\TitleField;
 use craft\fieldlayoutelements\entries\EntryTitleField;
+use craft\fieldlayoutelements\users\EmailField;
+use craft\fieldlayoutelements\users\FullNameField;
+use craft\fieldlayoutelements\users\PhotoField;
+use craft\fieldlayoutelements\users\UsernameField;
 use craft\fields\Assets;
 use craft\fields\Categories;
 use craft\fields\conditions\LightswitchFieldConditionRule;
@@ -143,9 +149,15 @@ class SchemaController extends Controller
             $volume->setFsHandle($spec['fs']);
             $volume->altTranslationMethod = 'site';
 
-            $elements = $spec['withFields']
-                ? [new CustomField($altField), new CustomField($creditField)]
-                : [];
+            // Craft injects the native Title element if a layout does not
+            // declare one, with a new UUID each time. Declaring it keeps the
+            // project config stable across rebuilds.
+            $elements = [new AssetTitleField()];
+
+            if ($spec['withFields']) {
+                $elements[] = new CustomField($altField);
+                $elements[] = new CustomField($creditField);
+            }
 
             $volume->setFieldLayout($this->layout("volume.{$spec['handle']}", Asset::class, [
                 'Content' => $elements,
@@ -220,6 +232,7 @@ class SchemaController extends Controller
 
         $group->setFieldLayout($this->layout('categoryGroup.journalTopics', Category::class, [
             'Content' => [
+                new TitleField(),
                 new CustomField($this->plainText('summary', 'Summary', [
                     'instructions' => 'One or two sentences. Used on listing pages and in search results.',
                     'multiline' => true,
@@ -443,6 +456,7 @@ class SchemaController extends Controller
                 [
                     'class' => LightswitchFieldConditionRule::class,
                     'fieldUid' => $this->fields['showButton']->uid,
+                    'uid' => $this->stableUid('condition.blockCta.showButton'),
                     'value' => true,
                 ],
             ],
@@ -648,6 +662,7 @@ class SchemaController extends Controller
                 [
                     'class' => LightswitchFieldConditionRule::class,
                     'fieldUid' => $this->fields['announcementEnabled']->uid,
+                    'uid' => $this->stableUid('condition.siteSettings.announcementEnabled'),
                     'value' => true,
                 ],
             ],
@@ -685,6 +700,12 @@ class SchemaController extends Controller
         $this->stdout("Users\n");
 
         $layout = $this->layout('user', User::class, [
+            'Account' => [
+                new UsernameField(),
+                new FullNameField(),
+                new PhotoField(),
+                new EmailField(),
+            ],
             'Profile' => [
                 new CustomField($this->fields['userRole']),
                 new CustomField($this->fields['userBio']),

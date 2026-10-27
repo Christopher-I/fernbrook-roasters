@@ -105,7 +105,7 @@ fieldLayouts:
                 -
                   class: craft\fields\conditions\LightswitchFieldConditionRule
                   fieldUid: 20aa30f9-8491-47a0-b8f7-25f8f9060040 # Show the announcement bar
-                  uid: ea2c1c17-d726-4d21-8007-86ce085445cd
+                  uid: 7862a73b-b2e8-5c8e-87ec-178443170c33
                   value: true
               elementType: craft\elements\GlobalSet
               fieldContext: global
@@ -131,7 +131,7 @@ fieldLayouts:
                 -
                   class: craft\fields\conditions\LightswitchFieldConditionRule
                   fieldUid: 20aa30f9-8491-47a0-b8f7-25f8f9060040 # Show the announcement bar
-                  uid: 761b37e1-f6b0-404f-8976-fea11bf16da2
+                  uid: 7862a73b-b2e8-5c8e-87ec-178443170c33
                   value: true
               elementType: craft\elements\GlobalSet
               fieldContext: global
